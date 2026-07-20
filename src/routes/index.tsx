@@ -1,10 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import hero from "@/assets/hero-hillside.jpg";
-import bonfire from "@/assets/bonfire-evening.jpg";
-import cottage1 from "@/assets/cottage-1.jpg";
-import thali from "@/assets/dining-thali.jpg";
-import farm from "@/assets/farm-garden.jpg";
-import lights from "@/assets/ambience-lights.jpg";
+import { EditableImage } from "@/components/site/EditableImage";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,11 +12,11 @@ export const Route = createFileRoute("/")({
 });
 
 const QUICK_NAV = [
-  { to: "/cottages", label: "Cottages", img: cottage1 },
-  { to: "/facilities", label: "Facilities", img: lights },
-  { to: "/dining", label: "Dining", img: thali },
-  { to: "/gallery", label: "Gallery", img: bonfire },
-  { to: "/contact", label: "Contact", img: farm },
+  { to: "/cottages", label: "Cottages", imgKey: "home.nav.cottages" },
+  { to: "/facilities", label: "Facilities", imgKey: "home.nav.facilities" },
+  { to: "/dining", label: "Dining", imgKey: "home.nav.dining" },
+  { to: "/gallery", label: "Gallery", imgKey: "home.nav.gallery" },
+  { to: "/contact", label: "Contact", imgKey: "home.nav.contact" },
 ] as const;
 
 function Home() {
@@ -29,8 +24,8 @@ function Home() {
     <>
       {/* HERO */}
       <section className="relative min-h-[100svh] overflow-hidden">
-        <img
-          src={hero}
+        <EditableImage
+          imgKey="home.hero"
           alt="Hillside cottages at Laligurans Agro Solutions at golden hour"
           className="absolute inset-0 h-full w-full object-cover"
           width={1920}
@@ -60,7 +55,6 @@ function Home() {
           </div>
         </div>
 
-        {/* Scroll hint */}
         <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-cream/60">
           <div className="flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em]">
             Scroll
@@ -92,8 +86,8 @@ function Home() {
                 to={q.to}
                 className="group relative aspect-[3/4] overflow-hidden rounded-2xl"
               >
-                <img
-                  src={q.img}
+                <EditableImage
+                  imgKey={q.imgKey}
                   alt=""
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -113,8 +107,8 @@ function Home() {
       <section className="section-pad bg-secondary/60">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-2 md:items-center md:px-8">
           <div className="relative">
-            <img
-              src={farm}
+            <EditableImage
+              imgKey="home.farm"
               alt="Working vegetable garden with hillside terraces"
               loading="lazy"
               width={1400}
@@ -153,8 +147,8 @@ function Home() {
 
       {/* EVENING CTA */}
       <section className="relative section-pad overflow-hidden">
-        <img
-          src={bonfire}
+        <EditableImage
+          imgKey="home.bonfire"
           alt=""
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"

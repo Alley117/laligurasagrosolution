@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
-import bonfire from "@/assets/bonfire-evening.jpg";
+import { useSiteImage } from "@/hooks/useSiteImage";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const heroImg = useSiteImage("contact.hero");
 
   return (
     <>
@@ -24,7 +25,7 @@ function Contact() {
         eyebrow="Get in touch"
         title="Come stay with us."
         subtitle="Send an inquiry below, or reach out directly. We usually reply within a day."
-        image={bonfire}
+        image={heroImg}
       />
 
       <section className="section-pad">
@@ -35,15 +36,11 @@ function Contact() {
               <ul className="mt-4 space-y-4 text-sm">
                 <li>
                   <div className="text-muted-foreground">Phone</div>
-                  <a href="tel:+9779800000000" className="font-medium text-foreground hover:text-accent">
-                    +977 98-0000-0000
-                  </a>
+                  <a href="tel:+9779800000000" className="font-medium text-foreground hover:text-accent">+977 98-0000-0000</a>
                 </li>
                 <li>
                   <div className="text-muted-foreground">Email</div>
-                  <a href="mailto:hello@laligurans.example" className="font-medium text-foreground hover:text-accent">
-                    hello@laligurans.example
-                  </a>
+                  <a href="mailto:hello@laligurans.example" className="font-medium text-foreground hover:text-accent">hello@laligurans.example</a>
                 </li>
                 <li>
                   <div className="text-muted-foreground">Address</div>
@@ -51,12 +48,7 @@ function Contact() {
                     Malarani-5, Bangi<br />
                     Arghakhanchi, Lumbini Province, Nepal
                   </p>
-                  <a
-                    href="https://maps.app.goo.gl/3bZst6WvjZioSvXs6"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-1 inline-block text-sm font-medium text-accent hover:underline"
-                  >
+                  <a href="https://maps.app.goo.gl/3bZst6WvjZioSvXs6" target="_blank" rel="noreferrer" className="mt-1 inline-block text-sm font-medium text-accent hover:underline">
                     Open in Google Maps →
                   </a>
                 </li>
@@ -64,13 +56,7 @@ function Contact() {
                   <div className="text-muted-foreground">Follow along</div>
                   <div className="mt-1 flex gap-2">
                     {["Facebook", "Instagram", "TikTok"].map((s) => (
-                      <a
-                        key={s}
-                        href="#"
-                        className="rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:border-accent hover:text-accent"
-                      >
-                        {s}
-                      </a>
+                      <a key={s} href="#" className="rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:border-accent hover:text-accent">{s}</a>
                     ))}
                   </div>
                 </li>
@@ -89,52 +75,27 @@ function Contact() {
 
           <div className="md:col-span-3">
             <div className="rounded-3xl border border-border bg-card p-6 md:p-10">
-              <div className="text-xs font-semibold uppercase tracking-widest text-accent">
-                Booking inquiry
-              </div>
-              <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">
-                Tell us about your stay.
-              </h2>
+              <div className="text-xs font-semibold uppercase tracking-widest text-accent">Booking inquiry</div>
+              <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Tell us about your stay.</h2>
 
               {sent ? (
                 <div className="mt-8 rounded-2xl bg-primary/10 p-6 text-primary">
                   <h3 className="font-display text-xl font-bold">Thank you!</h3>
-                  <p className="mt-2 text-sm text-foreground/80">
-                    Your message has been noted. We'll get back to you within a day
-                    with availability and next steps.
-                  </p>
+                  <p className="mt-2 text-sm text-foreground/80">Your message has been noted. We'll get back to you within a day with availability and next steps.</p>
                 </div>
               ) : (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSent(true);
-                  }}
-                  className="mt-6 grid gap-4"
-                >
+                <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="mt-6 grid gap-4">
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Your name" required>
-                      <input required type="text" className="input" placeholder="Full name" />
-                    </Field>
-                    <Field label="Email" required>
-                      <input required type="email" className="input" placeholder="you@example.com" />
-                    </Field>
+                    <Field label="Your name" required><input required type="text" className="input" placeholder="Full name" /></Field>
+                    <Field label="Email" required><input required type="email" className="input" placeholder="you@example.com" /></Field>
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Phone">
-                      <input type="tel" className="input" placeholder="+977…" />
-                    </Field>
-                    <Field label="Guests">
-                      <input type="number" min={1} defaultValue={2} className="input" />
-                    </Field>
+                    <Field label="Phone"><input type="tel" className="input" placeholder="+977…" /></Field>
+                    <Field label="Guests"><input type="number" min={1} defaultValue={2} className="input" /></Field>
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Check-in">
-                      <input type="date" className="input" />
-                    </Field>
-                    <Field label="Check-out">
-                      <input type="date" className="input" />
-                    </Field>
+                    <Field label="Check-in"><input type="date" className="input" /></Field>
+                    <Field label="Check-out"><input type="date" className="input" /></Field>
                   </div>
                   <Field label="Preferred cottage">
                     <select className="input" defaultValue="">
@@ -147,9 +108,7 @@ function Contact() {
                   <Field label="Anything else?">
                     <textarea rows={4} className="input" placeholder="Dietary needs, arrival time, celebrations…" />
                   </Field>
-                  <button type="submit" className="btn-primary mt-2 justify-self-start">
-                    Send inquiry
-                  </button>
+                  <button type="submit" className="btn-primary mt-2 justify-self-start">Send inquiry</button>
                 </form>
               )}
             </div>
