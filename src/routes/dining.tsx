@@ -15,12 +15,12 @@ export const Route = createFileRoute("/dining")({
   component: Dining,
 });
 
-const MENU = [
+const MENU: { name: string; body: string; tag: string; imgKey?: string }[] = [
   { name: "Nepali Thali — Dal Bhat Set", body: "Steamed rice, seasonal dal, saag, tarkari (vegetable curry), homemade achar, and papad. Vegetables straight from the farm.", tag: "Signature", imgKey: "dining.menu.thali" },
   { name: "Tandoori Whole Chicken", body: "Marinated overnight in yoghurt and hill spices, then cooked whole until the edges just char.", tag: "Sharing plate", imgKey: "dining.menu.grill" },
   { name: "Chicken Tikka & Wings", body: "Served with a bright mint-lemon dip and a small pickled onion-carrot salad on the side.", tag: "Small plate" },
   { name: "Grilled Meat Skewers", body: "Cooked over open flame, with a crunchy onion-carrot salad tossed in lime and coriander.", tag: "From the grill" },
-] as const;
+];
 
 function Dining() {
   const heroImg = useSiteImage("dining.hero");
