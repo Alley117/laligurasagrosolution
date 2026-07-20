@@ -253,7 +253,10 @@ function Footer() {
       <div className="border-t border-cream/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-cream/55 md:flex-row md:px-8">
           <p>© {new Date().getFullYear()} Laligurans Agro Solutions. All rights reserved.</p>
-          <p>Handcrafted in the hills of Arghakhanchi.</p>
+          <p>
+            Handcrafted in the hills of Arghakhanchi. ·{" "}
+            <Link to="/admin" className="text-cream/70 hover:text-accent">Manage photos</Link>
+          </p>
         </div>
       </div>
     </footer>
