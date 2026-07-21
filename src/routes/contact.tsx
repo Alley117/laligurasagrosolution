@@ -15,9 +15,36 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+const BOOKING_EMAIL = "laligurans555@gmail.com";
+const PHONE = "+9779851155485";
+
 function Contact() {
   const [sent, setSent] = useState(false);
   const heroImg = useSiteImage("contact.hero");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = e.currentTarget;
+    const get = (name: string) =>
+      (f.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null)?.value ?? "";
+
+    const subject = `Booking inquiry — ${get("name") || "New guest"}`;
+    const body = [
+      `Name: ${get("name")}`,
+      `Email: ${get("email")}`,
+      `Phone: ${get("phone")}`,
+      `Guests: ${get("guests")}`,
+      `Check-in: ${get("checkin")}`,
+      `Check-out: ${get("checkout")}`,
+      `Preferred cottage: ${get("cottage")}`,
+      ``,
+      `Message:`,
+      get("message"),
+    ].join("\n");
+
+    window.location.href = `mailto:${BOOKING_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setSent(true);
+  };
 
   return (
     <>
@@ -35,12 +62,12 @@ function Contact() {
               <div className="text-xs font-semibold uppercase tracking-widest text-accent">Reach us</div>
               <ul className="mt-4 space-y-4 text-sm">
                 <li>
-                  <div className="text-muted-foreground">Phone</div>
-                  <a href="tel:+9779800000000" className="font-medium text-foreground hover:text-accent">+977 98-0000-0000</a>
+                  <div className="text-muted-foreground">Phone / WhatsApp</div>
+                  <a href={`tel:${PHONE}`} className="font-medium text-foreground hover:text-accent">+977 98511 55485</a>
                 </li>
                 <li>
                   <div className="text-muted-foreground">Email</div>
-                  <a href="mailto:hello@laligurans.example" className="font-medium text-foreground hover:text-accent">hello@laligurans.example</a>
+                  <a href={`mailto:${BOOKING_EMAIL}`} className="font-medium text-foreground hover:text-accent break-all">{BOOKING_EMAIL}</a>
                 </li>
                 <li>
                   <div className="text-muted-foreground">Address</div>
@@ -55,9 +82,7 @@ function Contact() {
                 <li>
                   <div className="text-muted-foreground">Follow along</div>
                   <div className="mt-1 flex gap-2">
-                    {["Facebook", "Instagram", "TikTok"].map((s) => (
-                      <a key={s} href="#" className="rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:border-accent hover:text-accent">{s}</a>
-                    ))}
+                    <a href="https://www.facebook.com/laliguransagrosolutions" target="_blank" rel="noreferrer" className="rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:border-accent hover:text-accent">Facebook</a>
                   </div>
                 </li>
               </ul>
@@ -77,28 +102,31 @@ function Contact() {
             <div className="rounded-3xl border border-border bg-card p-6 md:p-10">
               <div className="text-xs font-semibold uppercase tracking-widest text-accent">Booking inquiry</div>
               <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Tell us about your stay.</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Your details are sent straight to <span className="font-medium text-foreground">{BOOKING_EMAIL}</span>.
+              </p>
 
               {sent ? (
                 <div className="mt-8 rounded-2xl bg-primary/10 p-6 text-primary">
                   <h3 className="font-display text-xl font-bold">Thank you!</h3>
-                  <p className="mt-2 text-sm text-foreground/80">Your message has been noted. We'll get back to you within a day with availability and next steps.</p>
+                  <p className="mt-2 text-sm text-foreground/80">Your email app should have opened with your inquiry ready to send. If not, please write us directly at <a href={`mailto:${BOOKING_EMAIL}`} className="underline">{BOOKING_EMAIL}</a>.</p>
                 </div>
               ) : (
-                <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="mt-6 grid gap-4">
+                <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Your name" required><input required type="text" className="input" placeholder="Full name" /></Field>
-                    <Field label="Email" required><input required type="email" className="input" placeholder="you@example.com" /></Field>
+                    <Field label="Your name" required><input name="name" required type="text" className="input" placeholder="Full name" /></Field>
+                    <Field label="Email" required><input name="email" required type="email" className="input" placeholder="you@example.com" /></Field>
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Phone"><input type="tel" className="input" placeholder="+977…" /></Field>
-                    <Field label="Guests"><input type="number" min={1} defaultValue={2} className="input" /></Field>
+                    <Field label="Phone"><input name="phone" type="tel" className="input" placeholder="+977…" /></Field>
+                    <Field label="Guests"><input name="guests" type="number" min={1} defaultValue={2} className="input" /></Field>
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Check-in"><input type="date" className="input" /></Field>
-                    <Field label="Check-out"><input type="date" className="input" /></Field>
+                    <Field label="Check-in"><input name="checkin" type="date" className="input" /></Field>
+                    <Field label="Check-out"><input name="checkout" type="date" className="input" /></Field>
                   </div>
                   <Field label="Preferred cottage">
-                    <select className="input" defaultValue="">
+                    <select name="cottage" className="input" defaultValue="">
                       <option value="">No preference</option>
                       <option>Cottage 1 — Laligurans</option>
                       <option>Cottage 2 — Bangi View</option>
@@ -106,7 +134,7 @@ function Contact() {
                     </select>
                   </Field>
                   <Field label="Anything else?">
-                    <textarea rows={4} className="input" placeholder="Dietary needs, arrival time, celebrations…" />
+                    <textarea name="message" rows={4} className="input" placeholder="Dietary needs, arrival time, celebrations…" />
                   </Field>
                   <button type="submit" className="btn-primary mt-2 justify-self-start">Send inquiry</button>
                 </form>
