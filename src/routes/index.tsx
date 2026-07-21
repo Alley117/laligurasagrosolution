@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { EditableImage } from "@/components/site/EditableImage";
+import { useSiteImage } from "@/hooks/useSiteImage";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Laligurans Agro Solutions — Hillside Cottages in Arghakhanchi, Nepal" },
-      { name: "description", content: "Stay in wooden cottages on a working farm in Malarani-5, Bangi. Farm-to-table meals, bonfires, and terraced hillside views." },
+      { name: "description", content: "Stay in wooden cottages on a working agro-farm in Malarani-5, Bangi. Farm-raised eggs, milk, meat, seasonal crops, bonfires and hillside views near Malarani Temple." },
     ],
   }),
   component: Home,
@@ -19,20 +20,54 @@ const QUICK_NAV = [
   { to: "/contact", label: "Contact", imgKey: "home.nav.contact" },
 ] as const;
 
+const PRODUCE = [
+  { icon: "🥚", title: "Farm-fresh eggs", note: "From our own local hens and free-roaming wild hens." },
+  { icon: "🥛", title: "Buffalo milk & curd", note: "Milked each morning from our resident buffalo herd." },
+  { icon: "🐔", title: "Chicken & meat", note: "Local hens and wild hens raised on-site, no shortcuts." },
+  { icon: "🥬", title: "Seasonal crops", note: "Cabbage, mustard greens, potato, chillies — grown right here." },
+];
+
+const NEARBY = [
+  {
+    title: "Malarani Temple",
+    distance: "A short drive up the ridge",
+    body: "One of Arghakhanchi's most loved pilgrimage sites, perched on the Malarani hilltop with sweeping views across the mid-hills and, on clear days, the Himalayan range to the north. Popular for sunrise visits and festival gatherings.",
+  },
+  {
+    title: "River fishing",
+    distance: "Walking distance from the cottages",
+    body: "A clear hill river runs close to the property — a favourite spot for local-style fishing (asala and other native fish). We can help arrange rods, a guide, and a packed lunch from the kitchen for a slow day by the water.",
+  },
+  {
+    title: "Terrace walks & viewpoints",
+    distance: "Straight out the front gate",
+    body: "Meandering paths through terraced farmland, forested ridges, and small villages — perfect for morning walks, birding, and photography.",
+  },
+];
+
 function Home() {
+  const logoSrc = useSiteImage("home.logo");
   return (
     <>
       {/* HERO */}
       <section className="relative min-h-[100svh] overflow-hidden">
         <EditableImage
           imgKey="home.hero"
-          alt="Hillside cottages at Laligurans Agro Solutions at golden hour"
+          alt="Hillside cottages at Laligurans Agro Solutions with terraced hills behind"
           className="absolute inset-0 h-full w-full object-cover"
           width={1920}
           height={1200}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-deep/50 via-forest-deep/30 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-deep/60 via-forest-deep/45 to-background" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+
+        {/* Logo watermark background */}
+        <img
+          src={logoSrc}
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute right-[-8%] top-[18%] w-[70vw] max-w-[560px] opacity-15 mix-blend-screen md:right-[6%] md:top-[14%] md:w-[38vw]"
+        />
 
         <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-32 md:px-8 md:pb-24">
           <div className="max-w-3xl text-cream">
@@ -42,9 +77,10 @@ function Home() {
               <span className="italic text-accent">breathe slower.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base text-cream/85 md:text-lg">
-              Wooden cottages tucked into terraced farmland. Meals cooked from
-              the garden outside your door. Evenings by the bonfire under a
-              blanket of Himalayan stars.
+              Wooden cottages on a working agro-farm — buffalo, hens, and a
+              full vegetable garden a few steps from your door. Meals cooked
+              from what we raise and grow, and evenings by the bonfire under
+              Himalayan stars.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/contact" className="btn-primary">Book your stay</Link>
@@ -74,8 +110,8 @@ function Home() {
               </h2>
             </div>
             <p className="max-w-sm text-muted-foreground">
-              Everything you need for a slow weekend — cottages, a working
-              vegetable farm, hearty Nepali meals, and evenings that end by the fire.
+              Cottages, a working farm, hearty Nepali meals cooked from our own
+              produce, and evenings that end by the fire.
             </p>
           </div>
 
@@ -109,38 +145,87 @@ function Home() {
           <div className="relative">
             <EditableImage
               imgKey="home.farm"
-              alt="Working vegetable garden with hillside terraces"
+              alt="Rows of cabbages growing in front of the resort with the Arghakhanchi hills behind"
               loading="lazy"
               width={1400}
               height={1000}
               className="aspect-[4/5] w-full rounded-3xl object-cover shadow-2xl"
             />
-            <div className="absolute -bottom-6 -right-4 hidden max-w-[220px] rounded-2xl bg-background p-5 shadow-xl md:block">
-              <div className="text-3xl font-bold text-accent font-display">Farm-to-table</div>
+            <div className="absolute -bottom-6 -right-4 hidden max-w-[240px] rounded-2xl bg-background p-5 shadow-xl md:block">
+              <div className="text-3xl font-bold text-accent font-display">100% ours</div>
               <p className="mt-1 text-sm text-muted-foreground">
-                Most of what lands on your plate was picked that morning, a few steps away.
+                Eggs, milk, meat and vegetables — raised and grown on this same
+                hillside, then walked into the kitchen.
               </p>
             </div>
           </div>
           <div>
-            <span className="eyebrow">Our story</span>
+            <span className="eyebrow">Our farm</span>
             <h2 className="mt-3 text-3xl font-bold md:text-5xl">
-              A working farm that opened its gate to guests.
+              We produce almost everything you'll eat here.
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              Laligurans Agro Solutions began as a hillside farm above Bangi, growing
-              seasonal vegetables, greens, and fruit along Arghakhanchi's terraced
-              slopes. Over time, a handful of wooden cottages went up along the
-              garden paths — small, quiet places for travellers to slow down and eat
-              what the land gives.
+              Laligurans Agro Solutions is a working farm first. We raise our own
+              <strong> buffalo</strong> for milk and curd, keep both
+              <strong> local hens and wild hens</strong> for eggs and meat, and grow
+              our own seasonal <strong>vegetables and crops</strong> across the
+              terraced fields around the cottages.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Today, it is still very much a farm first. The chickens, the vegetable
-              beds, and the flower gardens are part of every stay.
+              What lands on your plate at breakfast or dinner was, more often
+              than not, in the garden or the shed that morning.
             </p>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {PRODUCE.map((p) => (
+                <li
+                  key={p.title}
+                  className="flex items-start gap-3 rounded-2xl border border-border bg-background p-4"
+                >
+                  <span className="text-2xl leading-none">{p.icon}</span>
+                  <div>
+                    <div className="font-semibold">{p.title}</div>
+                    <div className="text-xs text-muted-foreground">{p.note}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
             <div className="mt-8">
               <Link to="/about" className="btn-ghost">Read our story →</Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEARBY / THINGS TO DO */}
+      <section className="section-pad">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <div className="max-w-2xl">
+            <span className="eyebrow">Around the resort</span>
+            <h2 className="mt-3 text-3xl font-bold md:text-5xl">
+              Temples, rivers, and quiet hilltop walks.
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              We sit inside one of Arghakhanchi's most scenic pockets. Guests
+              often plan their days around a temple visit, an afternoon by the
+              river, or just a slow walk along the terraces.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {NEARBY.map((n) => (
+              <div
+                key={n.title}
+                className="rounded-3xl border border-border bg-card p-6 shadow-sm"
+              >
+                <div className="text-xs font-semibold uppercase tracking-widest text-accent">
+                  {n.distance}
+                </div>
+                <h3 className="mt-2 font-display text-xl font-bold">{n.title}</h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  {n.body}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -153,11 +238,11 @@ function Home() {
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-forest-deep/70" />
+        <div className="absolute inset-0 bg-forest-deep/75" />
         <div className="relative mx-auto max-w-3xl px-5 text-center text-cream md:px-8">
           <span className="eyebrow !text-cream/80">Evenings at Laligurans</span>
           <h2 className="mt-4 text-4xl font-bold md:text-6xl">
-            Fire, flags, and the quiet of the hills.
+            Fire, prayer flags, and the quiet of the hills.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-cream/85">
             When the sun drops behind the ridge, the lanterns come on and the
@@ -165,9 +250,12 @@ function Home() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link to="/contact" className="btn-primary">Book Now</Link>
-            <Link to="/gallery" className="btn-ghost !text-cream !border-cream/40 hover:!bg-cream/10">
-              See the gallery
-            </Link>
+            <a
+              href="tel:+9779851155485"
+              className="btn-ghost !text-cream !border-cream/40 hover:!bg-cream/10"
+            >
+              Call 9851155485
+            </a>
           </div>
         </div>
       </section>
