@@ -12,7 +12,7 @@ import cottageRowNight from "@/assets/real/cottage-row-night.jpg.asset.json";
 import walkwayLights from "@/assets/real/walkway-lights.jpg.asset.json";
 import entranceSign from "@/assets/real/entrance-sign.jpg.asset.json";
 import swing from "@/assets/real/swing.jpg.asset.json";
-import logo from "@/assets/real/logo.jpg.asset.json";
+import logo from "@/assets/real/brand-logo.jpg.asset.json";
 
 const HERO = cottagesDay.url;
 const GAZEBO = gazeboNight.url;
