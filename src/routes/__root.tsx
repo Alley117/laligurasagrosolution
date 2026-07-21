@@ -273,6 +273,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <FloatingContact />
     </QueryClientProvider>
   );
 }
