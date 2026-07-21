@@ -12,6 +12,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { FloatingContact } from "@/components/site/FloatingContact";
+import { LOGO_URL } from "@/lib/site-images";
 
 function NotFoundComponent() {
   return (
@@ -73,7 +74,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
@@ -132,15 +134,11 @@ function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
         <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <span
-            aria-hidden
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground shadow-lg"
-            style={{ boxShadow: "0 6px 16px -6px color-mix(in oklab, var(--color-accent) 60%, transparent)" }}
-          >
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-              <path d="M12 2c-1.5 3 .5 5 .5 7S10 12 10 15c0 3.3 2.7 6 6 6-1-2-1-4 0-6-2.5-1-4-4-4-6 0-3 1-5 0-7z" />
-            </svg>
-          </span>
+          <img
+            src={LOGO_URL}
+            alt="Laligurans Agro Solutions logo"
+            className="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-accent/40 shadow-md"
+          />
           <span className="flex flex-col leading-tight">
             <span className="font-display text-base font-bold tracking-tight text-foreground">
               Laligurans
@@ -239,6 +237,10 @@ function Footer() {
           >
             Open in Google Maps →
           </a>
+          <p className="mt-4 text-sm text-cream/85">
+            <a href="mailto:laligurans555@gmail.com" className="hover:text-accent break-all">laligurans555@gmail.com</a><br />
+            <a href="tel:+9779851155485" className="hover:text-accent">+977 98511 55485</a>
+          </p>
         </div>
         <div>
           <h4 className="text-xs font-semibold uppercase tracking-widest text-cream/60">Explore</h4>
