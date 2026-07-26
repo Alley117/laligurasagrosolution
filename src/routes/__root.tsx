@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -13,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { FloatingContact } from "@/components/site/FloatingContact";
 import { LOGO_URL } from "@/lib/site-images";
+import { getSiteActive } from "@/lib/admin-gate.functions";
 
 function NotFoundComponent() {
   return (
