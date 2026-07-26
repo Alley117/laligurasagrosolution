@@ -61,6 +61,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  loader: async () => {
+    try {
+      return await getSiteActive();
+    } catch {
+      return { is_active: true };
+    }
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
