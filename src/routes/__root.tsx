@@ -275,8 +275,47 @@ function Footer() {
   );
 }
 
+function MaintenancePage() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-5">
+      <div className="max-w-lg text-center">
+        <img
+          src={LOGO_URL}
+          alt="Laligurans Agro Solutions"
+          className="mx-auto h-24 w-24 rounded-full object-cover ring-2 ring-accent/40 shadow-md"
+        />
+        <h1 className="mt-6 font-display text-3xl font-bold text-foreground md:text-4xl">
+          We'll be right back
+        </h1>
+        <p className="mt-3 text-base text-muted-foreground">
+          Laligurans Agro Solutions is briefly offline for updates. Please check
+          back soon — for bookings or urgent enquiries, reach us directly:
+        </p>
+        <div className="mt-6 flex flex-col items-center gap-2 text-sm">
+          <a href="tel:+9779851155485" className="btn-primary">Call +977 98511 55485</a>
+          <a href="mailto:laligurans555@gmail.com" className="text-muted-foreground hover:text-accent">
+            laligurans555@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { is_active } = Route.useLoaderData();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAdminRoute = pathname.startsWith("/admin");
+
+  if (!is_active && !isAdminRoute) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <MaintenancePage />
+      </QueryClientProvider>
+    );
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
