@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { useEffect, useMemo, useState } from "react";
 import {
   SITE_IMAGES,
   clearAllOverrides,
@@ -7,11 +8,25 @@ import {
   setOverride,
 } from "@/lib/site-images";
 import { useSiteImage } from "@/hooks/useSiteImage";
+import {
+  getAdminStatus,
+  getSiteActive,
+  lockAdmin,
+  setSiteActive,
+  unlockAdmin,
+} from "@/lib/admin-gate.functions";
 
 export const Route = createFileRoute("/admin")({
+  loader: async () => {
+    const [status, site] = await Promise.all([
+      getAdminStatus().catch(() => ({ unlocked: false })),
+      getSiteActive().catch(() => ({ is_active: true })),
+    ]);
+    return { unlocked: status.unlocked, is_active: site.is_active };
+  },
   head: () => ({
     meta: [
-      { title: "Image Admin — Laligurans" },
+      { title: "Site Admin — Laligurans" },
       { name: "robots", content: "noindex, nofollow" },
     ],
   }),
@@ -21,11 +36,110 @@ export const Route = createFileRoute("/admin")({
 const SECTIONS = Array.from(new Set(SITE_IMAGES.map((i) => i.section)));
 
 function Admin() {
+  const { unlocked, is_active } = Route.useLoaderData();
+  if (!unlocked) return <LoginGate />;
+  return <AdminPanel initialActive={is_active} />;
+}
+
+function LoginGate() {
+  const router = useRouter();
+  const unlock = useServerFn(unlockAdmin);
+  const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const res = await unlock({ data: { password } });
+      if (res.ok) {
+        await router.invalidate();
+      } else {
+        setError("Incorrect password.");
+      }
+    } catch {
+      setError("Something went wrong. Try again.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-5 pt-24 pb-16">
+      <form
+        onSubmit={onSubmit}
+        className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-lg"
+      >
+        <h1 className="font-display text-2xl font-bold">Admin sign-in</h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Enter the admin password to manage photos and site status.
+        </p>
+        <label className="mt-5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Password
+        </label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoFocus
+          autoComplete="current-password"
+          className="mt-2 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm"
+        />
+        {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
+        <button
+          type="submit"
+          disabled={busy || !password}
+          className="btn-primary mt-5 w-full disabled:opacity-60"
+        >
+          {busy ? "Checking…" : "Unlock admin"}
+        </button>
+      </form>
+    </div>
+  );
+}
+
+function AdminPanel({ initialActive }: { initialActive: boolean }) {
+  const router = useRouter();
+  const lock = useServerFn(lockAdmin);
+  const toggle = useServerFn(setSiteActive);
+  const [active, setActive] = useState(initialActive);
+  const [saving, setSaving] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<string>(SECTIONS[0]);
   const items = useMemo(
     () => SITE_IMAGES.filter((i) => i.section === activeSection),
     [activeSection],
   );
+
+  useEffect(() => setActive(initialActive), [initialActive]);
+
+  async function onToggle(next: boolean) {
+    if (
+      !next &&
+      !confirm(
+        "Deactivate the website? Visitors will see a maintenance page until you turn it back on.",
+      )
+    )
+      return;
+    setSaving(true);
+    setMsg(null);
+    try {
+      const res = await toggle({ data: { is_active: next } });
+      setActive(res.is_active);
+      setMsg(next ? "Website is now live." : "Website is now offline.");
+    } catch (e) {
+      setMsg("Couldn't update site status.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function onLogout() {
+    await lock();
+    await router.invalidate();
+  }
 
   return (
     <div className="min-h-screen bg-background pt-28 pb-24">
@@ -33,32 +147,80 @@ function Admin() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="eyebrow">Site admin</span>
-            <h1 className="mt-2 text-3xl font-bold md:text-4xl">Manage site photos</h1>
+            <h1 className="mt-2 text-3xl font-bold md:text-4xl">Manage site</h1>
+          </div>
+          <button onClick={onLogout} className="btn-ghost text-sm">
+            Sign out
+          </button>
+        </div>
+
+        {/* Activation toggle */}
+        <section
+          className={`mt-8 rounded-2xl border p-5 md:p-6 ${
+            active
+              ? "border-border bg-card"
+              : "border-destructive/40 bg-destructive/5"
+          }`}
+        >
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-3">
+                <span
+                  className={`inline-block h-2.5 w-2.5 rounded-full ${
+                    active ? "bg-emerald-500" : "bg-destructive"
+                  }`}
+                />
+                <h2 className="font-display text-xl font-bold">
+                  Website is {active ? "active" : "offline"}
+                </h2>
+              </div>
+              <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+                {active
+                  ? "Visitors can browse the whole site normally."
+                  : "Visitors see a maintenance page. This admin page stays reachable so you can turn the site back on."}
+              </p>
+              {msg && (
+                <p className="mt-2 text-xs font-medium text-foreground/80">{msg}</p>
+              )}
+            </div>
+            <button
+              onClick={() => onToggle(!active)}
+              disabled={saving}
+              className={`${
+                active ? "btn-ghost" : "btn-primary"
+              } disabled:opacity-60`}
+            >
+              {saving
+                ? "Saving…"
+                : active
+                  ? "Deactivate website"
+                  : "Activate website"}
+            </button>
+          </div>
+        </section>
+
+        {/* Photo manager */}
+        <div className="mt-12 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-bold">Manage site photos</h2>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
               Upload a new photo or paste an image URL for any slot on the site.
-              Changes are saved in <strong>this browser only</strong> (localStorage)
-              — visitors on other devices will still see the built-in defaults
-              until you replace those too or move to a shared backend.
-            </p>
-            <p className="mt-2 max-w-2xl text-xs text-muted-foreground">
-              Tip: for large photos, prefer pasting a hosted URL (e.g. from Google
-              Drive share link, Imgur, or your own hosting). Uploads over ~1&nbsp;MB
-              can fill up browser storage quickly.
+              Photo overrides are saved in <strong>this browser only</strong>.
             </p>
           </div>
           <button
             onClick={() => {
-              if (confirm("Reset every image back to the original placeholder?")) {
+              if (confirm("Reset every image back to the original photo?")) {
                 clearAllOverrides();
               }
             }}
             className="btn-ghost text-sm"
           >
-            Reset all to defaults
+            Reset all photos
           </button>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap gap-2">
           {SECTIONS.map((s) => (
             <button
               key={s}
@@ -74,7 +236,7 @@ function Admin() {
           ))}
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
           {items.map((it) => (
             <ImageRow key={it.id} id={it.id} label={it.label} />
           ))}
@@ -110,7 +272,7 @@ function ImageRow({ id, label }: { id: string; label: string }) {
         r.readAsDataURL(file);
       });
       setOverride(id, dataUrl);
-    } catch (e) {
+    } catch {
       setErr("Couldn't read that file.");
     } finally {
       setBusy(false);
