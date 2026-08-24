@@ -62,7 +62,7 @@ function Gallery() {
                 className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
                   cat === c
                     ? "border-accent bg-accent text-accent-foreground"
-                    : "border-border bg-card text-foreground/70 hover:text-foreground"
+                    : "border-border bg-card text-foreground/90 hover:text-foreground"
                 }`}
               >
                 {c}

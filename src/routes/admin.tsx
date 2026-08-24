@@ -180,7 +180,7 @@ function AdminPanel({ initialActive }: { initialActive: boolean }) {
                   : "Visitors see a maintenance page. This admin page stays reachable so you can turn the site back on."}
               </p>
               {msg && (
-                <p className="mt-2 text-xs font-medium text-foreground/80">{msg}</p>
+                <p className="mt-2 text-xs font-medium text-foreground/90">{msg}</p>
               )}
             </div>
             <button
@@ -228,7 +228,7 @@ function AdminPanel({ initialActive }: { initialActive: boolean }) {
               className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
                 s === activeSection
                   ? "border-accent bg-accent text-accent-foreground"
-                  : "border-border bg-card text-foreground/70 hover:text-foreground"
+                  : "border-border bg-card text-foreground/90 hover:text-foreground"
               }`}
             >
               {s}

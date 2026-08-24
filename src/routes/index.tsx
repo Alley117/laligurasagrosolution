@@ -71,12 +71,12 @@ function Home() {
 
         <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-32 md:px-8 md:pb-24">
           <div className="max-w-3xl text-cream">
-            <span className="eyebrow !text-cream/85">Malarani-5 · Bangi · Arghakhanchi</span>
+            <span className="eyebrow !text-cream/95">Malarani-5 · Bangi · Arghakhanchi</span>
             <h1 className="mt-4 text-5xl font-bold leading-[1] md:text-7xl lg:text-8xl">
               Where the hills<br />
               <span className="italic text-accent">breathe slower.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base text-cream/85 md:text-lg">
+            <p className="mt-6 max-w-xl text-base text-cream/95 md:text-lg">
               Wooden cottages on a working agro-farm — buffalo, hens, and a
               full vegetable garden a few steps from your door. Meals cooked
               from what we raise and grow, and evenings by the bonfire under
@@ -91,10 +91,10 @@ function Home() {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-cream/60">
+        <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-cream/95">
           <div className="flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em]">
             Scroll
-            <span className="h-8 w-px bg-cream/40 animate-pulse" />
+            <span className="h-8 w-px bg-cream/70 animate-pulse" />
           </div>
         </div>
       </section>
@@ -130,7 +130,7 @@ function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4">
-                  <div className="text-xs uppercase tracking-widest text-cream/70">Explore</div>
+                  <div className="text-xs uppercase tracking-widest text-cream/95">Explore</div>
                   <div className="mt-1 font-display text-xl font-bold text-cream">{q.label}</div>
                 </div>
               </Link>
@@ -240,11 +240,11 @@ function Home() {
         />
         <div className="absolute inset-0 bg-forest-deep/75" />
         <div className="relative mx-auto max-w-3xl px-5 text-center text-cream md:px-8">
-          <span className="eyebrow !text-cream/80">Evenings at Laligurans</span>
+          <span className="eyebrow !text-cream/95">Evenings at Laligurans</span>
           <h2 className="mt-4 text-4xl font-bold md:text-6xl">
             Fire, prayer flags, and the quiet of the hills.
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-cream/85">
+          <p className="mx-auto mt-5 max-w-xl text-cream/95">
             When the sun drops behind the ridge, the lanterns come on and the
             bonfire is lit. Bring a cup of tea and stay a while.
           </p>

@@ -109,7 +109,7 @@ function Contact() {
               {sent ? (
                 <div className="mt-8 rounded-2xl bg-primary/10 p-6 text-primary">
                   <h3 className="font-display text-xl font-bold">Thank you!</h3>
-                  <p className="mt-2 text-sm text-foreground/80">Your email app should have opened with your inquiry ready to send. If not, please write us directly at <a href={`mailto:${BOOKING_EMAIL}`} className="underline">{BOOKING_EMAIL}</a>.</p>
+                  <p className="mt-2 text-sm text-foreground/90">Your email app should have opened with your inquiry ready to send. If not, please write us directly at <a href={`mailto:${BOOKING_EMAIL}`} className="underline">{BOOKING_EMAIL}</a>.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
