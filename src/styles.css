@@ -43,7 +43,7 @@
   --radius: 0.5rem;
 
   /* Warm earthy palette — wood, deep green, ember red */
-  --cream: oklch(0.972 0.018 85);
+  --cream: oklch(0.985 0.014 85);
   --wood: oklch(0.45 0.06 55);
   --forest: oklch(0.42 0.09 145);
   --forest-deep: oklch(0.28 0.07 148);
