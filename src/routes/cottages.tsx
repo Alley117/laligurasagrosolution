@@ -58,7 +58,7 @@ function Cottages() {
                   <p className="mt-4 text-muted-foreground leading-relaxed">{c.body}</p>
                   <ul className="mt-5 grid gap-2 text-sm">
                     {["Private porch & seating", "Warm bedding & local textiles", "Garden & ridge views", "String lights at night"].map((x) => (
-                      <li key={x} className="flex items-center gap-2 text-foreground/80">
+                      <li key={x} className="flex items-center gap-2 text-foreground/90">
                         <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                         {x}
                       </li>

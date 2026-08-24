@@ -56,7 +56,7 @@ function Facilities() {
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5 text-cream">
                   <h3 className="font-display text-xl font-bold md:text-2xl">{it.title}</h3>
-                  <p className="mt-1 max-w-md text-sm text-cream/80">{it.body}</p>
+                  <p className="mt-1 max-w-md text-sm text-cream/95">{it.body}</p>
                 </div>
               </div>
             ))}
@@ -72,7 +72,7 @@ function Facilities() {
             {EXTRAS.map((e) => (
               <li key={e} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
                 <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" />
-                <span className="text-sm text-foreground/85">{e}</span>
+                <span className="text-sm text-foreground/90">{e}</span>
               </li>
             ))}
           </ul>

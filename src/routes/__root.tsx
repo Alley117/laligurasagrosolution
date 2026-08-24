@@ -163,7 +163,7 @@ function Header() {
             <Link
               key={n.to}
               to={n.to}
-              className="rounded-full px-3.5 py-2 text-sm font-medium text-foreground/70 transition hover:text-foreground hover:bg-foreground/5"
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-foreground/90 transition hover:text-foreground hover:bg-foreground/5"
               activeProps={{ className: "!text-foreground !bg-foreground/8" }}
               activeOptions={{ exact: n.to === "/" }}
             >
@@ -203,7 +203,7 @@ function Header() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground/80 hover:bg-foreground/5"
+                className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground/90 hover:bg-foreground/5"
                 activeProps={{ className: "!text-accent !bg-accent/10" }}
                 activeOptions={{ exact: n.to === "/" }}
               >
@@ -226,14 +226,14 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-4 md:px-8">
         <div className="md:col-span-2">
           <h3 className="font-display text-2xl font-bold">Laligurans Agro Solutions</h3>
-          <p className="mt-3 max-w-md text-sm text-cream/70">
+          <p className="mt-3 max-w-md text-sm text-cream/95">
             A working agro-farm and cottage stay in the mid-hills of Arghakhanchi.
             Slow mornings, garden-grown meals, bonfires under the stars.
           </p>
         </div>
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-widest text-cream/60">Visit</h4>
-          <p className="mt-3 text-sm text-cream/85">
+          <h4 className="text-xs font-semibold uppercase tracking-widest text-cream/95">Visit</h4>
+          <p className="mt-3 text-sm text-cream/95">
             Malarani-5, Bangi<br />
             Arghakhanchi, Lumbini Province<br />
             Nepal
@@ -246,28 +246,28 @@ function Footer() {
           >
             Open in Google Maps →
           </a>
-          <p className="mt-4 text-sm text-cream/85">
+          <p className="mt-4 text-sm text-cream/95">
             <a href="mailto:laligurans555@gmail.com" className="hover:text-accent break-all">laligurans555@gmail.com</a><br />
             <a href="tel:+9779851155485" className="hover:text-accent">+977 98511 55485</a>
           </p>
         </div>
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-widest text-cream/60">Explore</h4>
+          <h4 className="text-xs font-semibold uppercase tracking-widest text-cream/95">Explore</h4>
           <ul className="mt-3 space-y-2 text-sm">
             {NAV.slice(1).map((n) => (
               <li key={n.to}>
-                <Link to={n.to} className="text-cream/85 hover:text-accent">{n.label}</Link>
+                <Link to={n.to} className="text-cream/95 hover:text-accent">{n.label}</Link>
               </li>
             ))}
           </ul>
         </div>
       </div>
       <div className="border-t border-cream/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-cream/55 md:flex-row md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-cream/95 md:flex-row md:px-8">
           <p>© {new Date().getFullYear()} Laligurans Agro Solutions. All rights reserved.</p>
           <p>
             Handcrafted in the hills of Arghakhanchi. ·{" "}
-            <Link to="/admin" className="text-cream/70 hover:text-accent">Manage photos</Link>
+            <Link to="/admin" className="text-cream/95 hover:text-accent">Manage photos</Link>
           </p>
         </div>
       </div>
