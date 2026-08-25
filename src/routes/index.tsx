@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Laligurans Agro Solutions — Hillside Cottages in Arghakhanchi, Nepal" },
-      { name: "description", content: "Stay in wooden cottages on a working agro-farm in Malarani-5, Bangi. Farm-raised eggs, milk, meat, seasonal crops, bonfires and hillside views near Malarani Temple." },
+      { name: "description", content: "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple." },
     ],
   }),
   component: Home,
