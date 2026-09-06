@@ -47,6 +47,8 @@ function LoginGate() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showHelp, setShowHelp] = useState(false);
+
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -95,6 +97,45 @@ function LoginGate() {
         >
           {busy ? "Checking…" : "Unlock admin"}
         </button>
+
+        <button
+          type="button"
+          onClick={() => setShowHelp((v) => !v)}
+          className="mt-4 w-full text-center text-sm font-medium text-accent underline underline-offset-4"
+        >
+          Forgot password?
+        </button>
+
+        {showHelp && (
+          <div className="mt-3 rounded-xl border border-border bg-background p-4 text-sm text-muted-foreground">
+            <p className="font-semibold text-foreground">Reset your admin password</p>
+            <ol className="mt-2 list-decimal space-y-1.5 pl-4">
+              <li>
+                Ask for a reset from your project owner account — the password is stored
+                privately and can be replaced with a new one at any time.
+              </li>
+              <li>
+                Once it's replaced, come back to this page and sign in with the new
+                password.
+              </li>
+            </ol>
+            <p className="mt-3">
+              Need help right away? Contact{" "}
+              <a
+                className="font-medium text-accent underline"
+                href="mailto:laligurans555@gmail.com?subject=Admin%20password%20reset"
+              >
+                laligurans555@gmail.com
+              </a>{" "}
+              or call{" "}
+              <a className="font-medium text-accent underline" href="tel:+9779851155485">
+                9851155485
+              </a>
+              .
+            </p>
+          </div>
+        )}
+
       </form>
     </div>
   );
