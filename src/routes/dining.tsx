@@ -51,7 +51,7 @@ function Dining() {
         </div>
       </section>
 
-      <section className="section-pad bg-secondary/60">
+      <section className="section-pad bg-secondary/60 section-light">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <span className="eyebrow">The menu</span>
           <h2 className="mt-3 text-3xl font-bold md:text-5xl">A few things we cook well.</h2>

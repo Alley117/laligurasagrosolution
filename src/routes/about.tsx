@@ -53,7 +53,7 @@ function About() {
         </div>
       </section>
 
-      <section className="section-pad bg-secondary/60">
+      <section className="section-pad bg-secondary/60 section-light">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <div className="max-w-2xl">
             <span className="eyebrow">What we believe</span>

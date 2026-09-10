@@ -53,15 +53,15 @@
   --background: #091F14;
   --foreground: var(--cream);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.14 0.022 55);
+  --card-foreground: oklch(0.08 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.14 0.022 55);
+  --popover-foreground: oklch(0.08 0 0);
   --primary: oklch(0.36 0.09 145);
   --primary-foreground: oklch(0.99 0.008 85);
   --secondary: oklch(0.93 0.028 80);
-  --secondary-foreground: oklch(0.2 0.04 55);
+  --secondary-foreground: oklch(0.08 0 0);
   --muted: oklch(0.94 0.02 80);
-  --muted-foreground: oklch(0.75 0.025 75);
+  --muted-foreground: oklch(0.88 0.02 85);
   --accent: oklch(0.58 0.19 35);
   --accent-foreground: oklch(0.98 0.012 85);
   --destructive: oklch(0.55 0.22 27);
@@ -109,15 +109,29 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    font-weight: 450;
+    font-weight: 500;
   }
-  p { font-weight: 450; }
+  p { font-weight: 500; }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
     color: var(--color-foreground);
     font-weight: 700;
   }
+}
+
+/* Light-surface sections: black text on cream/white backgrounds */
+@utility section-light {
+  --color-foreground: #0a0a0a;
+  --color-muted-foreground: oklch(0.32 0.02 80);
+  --color-border: oklch(0.82 0.015 75);
+}
+
+/* Cards are always light, so their text stays dark and legible regardless of surrounding section */
+@utility bg-card {
+  --color-foreground: #0a0a0a;
+  --color-muted-foreground: oklch(0.32 0.02 80);
+  --color-border: oklch(0.82 0.015 75);
 }
 
 @utility btn-primary {

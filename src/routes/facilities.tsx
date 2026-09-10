@@ -64,7 +64,7 @@ function Facilities() {
         </div>
       </section>
 
-      <section className="section-pad bg-secondary/60">
+      <section className="section-pad bg-secondary/60 section-light">
         <div className="mx-auto max-w-5xl px-5 md:px-8">
           <span className="eyebrow">Also on site</span>
           <h2 className="mt-3 text-3xl font-bold md:text-4xl">Little comforts around the property.</h2>
