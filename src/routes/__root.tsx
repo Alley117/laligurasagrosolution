@@ -75,7 +75,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Laligurans Agro Solutions — Hillside Cottages in Arghakhanchi, Nepal" },
       { name: "description", content: "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple." },
       { name: "author", content: "Laligurans Agro Solutions" },
-      { name: "theme-color", content: "#5a2a1a" },
+      { name: "theme-color", content: "#091F14" },
       { property: "og:title", content: "Laligurans Agro Solutions — Hillside Cottages in Arghakhanchi, Nepal" },
       { property: "og:description", content: "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple." },
       { property: "og:type", content: "website" },
