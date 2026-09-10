@@ -140,7 +140,7 @@ function Home() {
       </section>
 
       {/* STORY / FARM */}
-      <section className="section-pad bg-secondary/60">
+      <section className="section-pad bg-secondary/60 section-light">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-2 md:items-center md:px-8">
           <div className="relative">
             <EditableImage
