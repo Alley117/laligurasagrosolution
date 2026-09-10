@@ -153,7 +153,7 @@ function Home() {
             />
             <div className="absolute -bottom-6 -right-4 hidden max-w-[240px] rounded-2xl bg-background p-5 shadow-xl md:block">
               <div className="text-3xl font-bold text-accent font-display">100% ours</div>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="mt-1 text-sm text-cream/90">
                 Eggs, milk, meat and vegetables — raised and grown on this same
                 hillside, then walked into the kitchen.
               </p>
