@@ -70,16 +70,25 @@ function LoginGate() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-5 pt-24 pb-16">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 pt-24 pb-16">
+      {/* Jungle background */}
+      <img
+        src={adminBgAsset.url}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/55" />
+
       <form
         onSubmit={onSubmit}
-        className="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-lg"
+        className="relative w-full max-w-md rounded-2xl border border-white/25 bg-black/35 p-7 shadow-2xl backdrop-blur-md"
       >
-        <h1 className="font-display text-2xl font-bold">Admin sign-in</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Enter the admin password to manage photos and site status.
+        <h1 className="font-display text-3xl font-bold !text-white">Welcome back!</h1>
+        <p className="mt-2 text-sm font-medium text-white/85">
+          Sign in to manage photos and site status.
         </p>
-        <label className="mt-5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <label className="mt-6 block text-xs font-semibold uppercase tracking-wider text-white/80">
           Password
         </label>
         <input
@@ -88,9 +97,10 @@ function LoginGate() {
           onChange={(e) => setPassword(e.target.value)}
           autoFocus
           autoComplete="current-password"
-          className="mt-2 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm"
+          placeholder="Enter admin password"
+          className="mt-2 w-full rounded-lg border border-white/30 bg-white/10 px-3 py-2.5 text-sm font-medium text-white placeholder:text-white/50 focus:border-white/60 focus:outline-none"
         />
-        {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
+        {error && <p className="mt-3 text-sm font-semibold text-red-300">{error}</p>}
         <button
           type="submit"
           disabled={busy || !password}
@@ -102,14 +112,14 @@ function LoginGate() {
         <button
           type="button"
           onClick={() => setShowHelp((v) => !v)}
-          className="mt-4 w-full text-center text-sm font-medium text-accent underline underline-offset-4"
+          className="mt-4 w-full text-center text-sm font-semibold text-white underline underline-offset-4"
         >
           Forgot password?
         </button>
 
         {showHelp && (
-          <div className="mt-3 rounded-xl border border-border bg-background p-4 text-sm text-muted-foreground">
-            <p className="font-semibold text-foreground">Reset your admin password</p>
+          <div className="mt-3 rounded-xl border border-white/25 bg-black/40 p-4 text-sm text-white/85">
+            <p className="font-semibold text-white">Reset your admin password</p>
             <ol className="mt-2 list-decimal space-y-1.5 pl-4">
               <li>
                 Ask for a reset from your project owner account — the password is stored
@@ -123,13 +133,13 @@ function LoginGate() {
             <p className="mt-3">
               Need help right away? Contact{" "}
               <a
-                className="font-medium text-accent underline"
+                className="font-semibold text-white underline"
                 href="mailto:laligurans555@gmail.com?subject=Admin%20password%20reset"
               >
                 laligurans555@gmail.com
               </a>{" "}
               or call{" "}
-              <a className="font-medium text-accent underline" href="tel:+9779851155485">
+              <a className="font-semibold text-white underline" href="tel:+9779851155485">
                 9851155485
               </a>
               .
