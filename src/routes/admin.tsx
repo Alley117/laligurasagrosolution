@@ -8,6 +8,7 @@ import {
   setOverride,
 } from "@/lib/site-images";
 import { useSiteImage } from "@/hooks/useSiteImage";
+import adminBgAsset from "@/assets/admin-login-bg.jpg.asset.json";
 import {
   getAdminStatus,
   getSiteActive,
