@@ -123,14 +123,20 @@
 /* Light-surface sections: black text on cream/white backgrounds */
 @utility section-light {
   --color-foreground: #0a0a0a;
-  --color-muted-foreground: oklch(0.32 0.02 80);
+  --foreground: #0a0a0a;
+  --color-muted-foreground: #262626;
+  --muted-foreground: #262626;
   --color-border: oklch(0.82 0.015 75);
 }
 
 /* Cards are always light, so their text stays dark and legible regardless of surrounding section */
 @utility bg-card {
   --color-foreground: #0a0a0a;
-  --color-muted-foreground: oklch(0.32 0.02 80);
+  --foreground: #0a0a0a;
+  --color-card-foreground: #0a0a0a;
+  --card-foreground: #0a0a0a;
+  --color-muted-foreground: #262626;
+  --muted-foreground: #262626;
   --color-border: oklch(0.82 0.015 75);
 }
 
