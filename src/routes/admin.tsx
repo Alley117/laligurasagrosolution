@@ -134,13 +134,13 @@ function LoginGate() {
               Need help right away? Contact{" "}
               <a
                 className="font-semibold text-white underline"
-                href="mailto:laligurans555@gmail.com?subject=Admin%20password%20reset"
+                href="mailto:genzhustle99@gmail.com?subject=Admin%20password%20reset"
               >
-                laligurans555@gmail.com
+                genzhustle99@gmail.com
               </a>{" "}
               or call{" "}
-              <a className="font-semibold text-white underline" href="tel:+9779851155485">
-                9851155485
+              <a className="font-semibold text-white underline" href="tel:+9779768843117">
+                9768843117
               </a>
               .
             </p>
