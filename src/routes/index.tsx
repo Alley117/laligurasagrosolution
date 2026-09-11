@@ -251,10 +251,10 @@ function Home() {
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link to="/contact" className="btn-primary">Book Now</Link>
             <a
-              href="tel:+9779851155485"
+              href="tel:+9779768843117"
               className="btn-ghost !text-cream !border-cream/40 hover:!bg-cream/10"
             >
-              Call 9851155485
+              Call 9768843117
             </a>
           </div>
         </div>

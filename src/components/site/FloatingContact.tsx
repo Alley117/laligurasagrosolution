@@ -1,6 +1,6 @@
 import { LOGO_URL } from "@/lib/site-images";
 
-const PHONE = "9851155485";
+const PHONE = "9768843117";
 const WA_MESSAGE = encodeURIComponent(
   "Namaste! I'd like to know more about staying at Laligurans Agro Solutions.",
 );

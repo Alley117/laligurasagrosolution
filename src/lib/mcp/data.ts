@@ -5,9 +5,9 @@ export const RESORT = {
   name: "Laligurans Agro Solutions",
   tagline: "Agro-tourism resort and cottage stay on a working farm",
   address: "Malarani-5, Bangi, Arghakhanchi, Nepal",
-  phone: "9851155485",
-  whatsapp: "+9779851155485",
-  email: "laligurans555@gmail.com",
+  phone: "9768843117",
+  whatsapp: "+9779768843117",
+  email: "genzhustle99@gmail.com",
   website: "https://laligurasagrosolution.lovable.app",
   about:
     "A family-run agro-farm and cottage stay set among terraced farmland and forested hillsides in Arghakhanchi. Wooden cottages, garden paths, evening bonfires and home-style Nepali cooking made from what the farm produces.",

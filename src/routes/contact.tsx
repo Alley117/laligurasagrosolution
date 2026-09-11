@@ -15,8 +15,8 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const BOOKING_EMAIL = "laligurans555@gmail.com";
-const PHONE = "+9779851155485";
+const BOOKING_EMAIL = "genzhustle99@gmail.com";
+const PHONE = "+9779768843117";
 
 function Contact() {
   const [sent, setSent] = useState(false);

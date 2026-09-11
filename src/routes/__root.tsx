@@ -247,8 +247,8 @@ function Footer() {
             Open in Google Maps →
           </a>
           <p className="mt-4 text-sm text-cream/95">
-            <a href="mailto:laligurans555@gmail.com" className="hover:text-accent break-all">laligurans555@gmail.com</a><br />
-            <a href="tel:+9779851155485" className="hover:text-accent">+977 98511 55485</a>
+            <a href="mailto:genzhustle99@gmail.com" className="hover:text-accent break-all">genzhustle99@gmail.com</a><br />
+            <a href="tel:+9779768843117" className="hover:text-accent">+977 97688 43117</a>
           </p>
         </div>
         <div>
@@ -297,9 +297,9 @@ function MaintenancePage() {
           back soon — for bookings or urgent enquiries, reach us directly:
         </p>
         <div className="mt-6 flex flex-col items-center gap-2 text-sm">
-          <a href="tel:+9779851155485" className="btn-primary">Call +977 98511 55485</a>
-          <a href="mailto:laligurans555@gmail.com" className="text-muted-foreground hover:text-accent">
-            laligurans555@gmail.com
+          <a href="tel:+9779768843117" className="btn-primary">Call +977 97688 43117</a>
+          <a href="mailto:genzhustle99@gmail.com" className="text-muted-foreground hover:text-accent">
+            genzhustle99@gmail.com
           </a>
         </div>
       </div>
