@@ -179,12 +179,12 @@ function Home() {
               {PRODUCE.map((p) => (
                 <li
                   key={p.title}
-                  className="flex items-start gap-3 rounded-2xl border border-border bg-background p-4"
+                  className="flex items-start gap-3 rounded-2xl border border-cream/20 bg-background p-4 text-cream"
                 >
                   <span className="text-2xl leading-none">{p.icon}</span>
                   <div>
                     <div className="font-semibold">{p.title}</div>
-                    <div className="text-xs text-muted-foreground">{p.note}</div>
+                    <div className="text-xs text-cream/90">{p.note}</div>
                   </div>
                 </li>
               ))}
