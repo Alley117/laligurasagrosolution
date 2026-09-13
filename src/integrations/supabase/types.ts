@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      booking_inquiries: {
+        Row: {
+          checkin: string | null
+          checkout: string | null
+          cottage: string | null
+          created_at: string
+          email: string
+          guests: string | null
+          id: string
+          is_read: boolean
+          message: string | null
+          name: string
+          phone: string | null
+        }
+        Insert: {
+          checkin?: string | null
+          checkout?: string | null
+          cottage?: string | null
+          created_at?: string
+          email: string
+          guests?: string | null
+          id?: string
+          is_read?: boolean
+          message?: string | null
+          name: string
+          phone?: string | null
+        }
+        Update: {
+          checkin?: string | null
+          checkout?: string | null
+          cottage?: string | null
+          created_at?: string
+          email?: string
+          guests?: string | null
+          id?: string
+          is_read?: boolean
+          message?: string | null
+          name?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
       site_settings: {
         Row: {
           id: number
