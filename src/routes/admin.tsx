@@ -16,6 +16,7 @@ import {
   setSiteActive,
   unlockAdmin,
 } from "@/lib/admin-gate.functions";
+import { listInquiries, markInquiryRead } from "@/lib/inquiries.functions";
 
 export const Route = createFileRoute("/admin")({
   loader: async () => {
@@ -250,6 +251,9 @@ function AdminPanel({ initialActive }: { initialActive: boolean }) {
             </button>
           </div>
         </section>
+
+        <InquiriesPanel />
+
 
         {/* Photo manager */}
         <div className="mt-12 flex flex-wrap items-end justify-between gap-4">
