@@ -127,13 +127,21 @@ function Contact() {
               <div className="text-xs font-semibold uppercase tracking-widest text-accent">Booking inquiry</div>
               <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Tell us about your stay.</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Your details are sent straight to <span className="font-medium text-foreground">{BOOKING_EMAIL}</span>.
+                Your request is delivered to the resort team and saved in our booking inbox. You can also reach us at <span className="font-medium text-foreground">{BOOKING_EMAIL}</span>.
               </p>
 
               {sent ? (
                 <div className="mt-8 rounded-2xl bg-primary/10 p-6 text-primary">
                   <h3 className="font-display text-xl font-bold">Thank you!</h3>
-                  <p className="mt-2 text-sm text-foreground/90">Your email app should have opened with your inquiry ready to send. If not, please write us directly at <a href={`mailto:${BOOKING_EMAIL}`} className="underline">{BOOKING_EMAIL}</a>.</p>
+                  <p className="mt-2 text-sm text-foreground/90">
+                    We've received your inquiry and will reply soon. For the fastest response, tap below to send the same details on WhatsApp.
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    {waLink && (
+                      <a href={waLink} target="_blank" rel="noreferrer" className="btn-primary">Send on WhatsApp</a>
+                    )}
+                    <a href={`mailto:${BOOKING_EMAIL}`} className="btn-ghost">Email us</a>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
@@ -160,7 +168,10 @@ function Contact() {
                   <Field label="Anything else?">
                     <textarea name="message" rows={4} className="input" placeholder="Dietary needs, arrival time, celebrations…" />
                   </Field>
-                  <button type="submit" className="btn-primary mt-2 justify-self-start">Send inquiry</button>
+                  {error && <p className="text-sm font-medium text-destructive">{error}</p>}
+                  <button type="submit" disabled={busy} className="btn-primary mt-2 justify-self-start disabled:opacity-60">
+                    {busy ? "Sending…" : "Send inquiry"}
+                  </button>
                 </form>
               )}
             </div>
