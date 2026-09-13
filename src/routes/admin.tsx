@@ -402,3 +402,106 @@ function ImageRow({ id, label }: { id: string; label: string }) {
     </div>
   );
 }
+
+type Inquiry = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  guests: string | null;
+  checkin: string | null;
+  checkout: string | null;
+  cottage: string | null;
+  message: string | null;
+  is_read: boolean;
+  created_at: string;
+};
+
+function InquiriesPanel() {
+  const load = useServerFn(listInquiries);
+  const mark = useServerFn(markInquiryRead);
+  const [rows, setRows] = useState<Inquiry[] | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+
+  const refresh = async () => {
+    try {
+      const data = (await load()) as unknown as Inquiry[];
+      setRows(data);
+      setErr(null);
+    } catch {
+      setErr("Couldn't load booking inquiries.");
+    }
+  };
+
+  useEffect(() => {
+    refresh();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const unread = rows?.filter((r) => !r.is_read).length ?? 0;
+
+  return (
+    <section className="mt-12 rounded-3xl border border-border bg-card p-6 md:p-8">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 className="font-display text-2xl font-bold">
+            Booking inquiries{unread > 0 && <span className="ml-2 rounded-full bg-accent px-2 py-0.5 text-xs font-semibold text-accent-foreground">{unread} new</span>}
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Every request sent from the website's booking form is saved here.
+          </p>
+        </div>
+        <button onClick={refresh} className="btn-ghost text-sm">Refresh</button>
+      </div>
+
+      {err && <p className="mt-4 text-sm text-destructive">{err}</p>}
+      {!rows && !err && <p className="mt-4 text-sm text-muted-foreground">Loading…</p>}
+      {rows && rows.length === 0 && (
+        <p className="mt-4 text-sm text-muted-foreground">No inquiries yet.</p>
+      )}
+
+      <div className="mt-5 grid gap-4">
+        {rows?.map((r) => (
+          <div
+            key={r.id}
+            className={`rounded-2xl border p-4 ${r.is_read ? "border-border" : "border-accent/60 bg-accent/5"}`}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="font-semibold">{r.name}</div>
+              <div className="text-xs text-muted-foreground">
+                {new Date(r.created_at).toLocaleString()}
+              </div>
+            </div>
+            <div className="mt-2 grid gap-1 text-sm">
+              <div>
+                <a href={`mailto:${r.email}`} className="text-accent underline">{r.email}</a>
+                {r.phone && (
+                  <>
+                    {" · "}
+                    <a href={`tel:${r.phone}`} className="text-accent underline">{r.phone}</a>
+                  </>
+                )}
+              </div>
+              <div className="text-muted-foreground">
+                {r.guests && <>Guests: {r.guests} · </>}
+                {r.checkin && <>In: {r.checkin} · </>}
+                {r.checkout && <>Out: {r.checkout} · </>}
+                {r.cottage && <>Cottage: {r.cottage}</>}
+              </div>
+              {r.message && <p className="whitespace-pre-wrap text-foreground/90">{r.message}</p>}
+            </div>
+            <button
+              onClick={async () => {
+                await mark({ data: { id: r.id, isRead: !r.is_read } });
+                refresh();
+              }}
+              className="mt-3 text-xs font-medium text-muted-foreground underline hover:text-foreground"
+            >
+              Mark as {r.is_read ? "unread" : "read"}
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
