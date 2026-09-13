@@ -11,8 +11,7 @@ export const RESORT = {
   website: "https://laligurasagrosolution.lovable.app",
   about:
     "A family-run agro-farm and cottage stay set among terraced farmland and forested hillsides in Arghakhanchi. Wooden cottages, garden paths, evening bonfires and home-style Nepali cooking made from what the farm produces.",
-  farm:
-    "We raise buffalo, wild hen and local hen, and produce our own milk, eggs and meat. Seasonal crops — cabbage, potatoes, greens, tomatoes and herbs — are grown on the farm and used in the kitchen.",
+  farm: "We raise buffalo, wild hen and local hen, and produce our own milk, eggs and meat. Seasonal crops — cabbage, potatoes, greens, tomatoes and herbs — are grown on the farm and used in the kitchen.",
 };
 
 export const COTTAGES = [
@@ -57,15 +56,25 @@ export const MENU = [
   {
     name: "Grilled Meat Skewers",
     tag: "From the grill",
-    description: "Cooked over open flame, with a crunchy onion-carrot salad tossed in lime and coriander.",
+    description:
+      "Cooked over open flame, with a crunchy onion-carrot salad tossed in lime and coriander.",
   },
 ];
 
 export const FACILITIES = [
-  { name: "Working vegetable garden", description: "Walk the beds — greens, tomatoes, herbs and whatever is in season." },
+  {
+    name: "Working vegetable garden",
+    description: "Walk the beds — greens, tomatoes, herbs and whatever is in season.",
+  },
   { name: "Evening bonfire", description: "Lit most evenings in the fire circle." },
-  { name: "Garden swings & outdoor seating", description: "Tucked under bougainvillea and lanterns." },
-  { name: "Ambient night lighting", description: "Colourful lanterns and string lights across the grounds." },
+  {
+    name: "Garden swings & outdoor seating",
+    description: "Tucked under bougainvillea and lanterns.",
+  },
+  {
+    name: "Ambient night lighting",
+    description: "Colourful lanterns and string lights across the grounds.",
+  },
   { name: "Garden gazebo dining", description: "Outdoor table seating under warm light." },
   { name: "On-site parking", description: "Parking space at the property." },
 ];
@@ -73,7 +82,8 @@ export const FACILITIES = [
 export const ATTRACTIONS = [
   {
     name: "Malarani Temple",
-    description: "A well-known hilltop temple and viewpoint reached on a short trip from the resort.",
+    description:
+      "A well-known hilltop temple and viewpoint reached on a short trip from the resort.",
   },
   {
     name: "River fishing",

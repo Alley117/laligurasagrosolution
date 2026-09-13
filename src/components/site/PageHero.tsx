@@ -21,13 +21,9 @@ export function PageHero({
       </div>
       <div className="mx-auto max-w-5xl px-5 text-center text-cream md:px-8">
         {eyebrow && <span className="eyebrow !text-cream/95">{eyebrow}</span>}
-        <h1 className="mt-4 text-4xl font-bold leading-[1.05] md:text-6xl lg:text-7xl">
-          {title}
-        </h1>
+        <h1 className="mt-4 text-4xl font-bold leading-[1.05] md:text-6xl lg:text-7xl">{title}</h1>
         {subtitle && (
-          <p className="mx-auto mt-5 max-w-2xl text-base text-cream/95 md:text-lg">
-            {subtitle}
-          </p>
+          <p className="mx-auto mt-5 max-w-2xl text-base text-cream/95 md:text-lg">{subtitle}</p>
         )}
         {children && <div className="mt-8 flex flex-wrap justify-center gap-3">{children}</div>}
       </div>

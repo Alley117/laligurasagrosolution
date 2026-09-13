@@ -7,18 +7,40 @@ export const Route = createFileRoute("/cottages")({
   head: () => ({
     meta: [
       { title: "Cottages — Laligurans Agro Solutions" },
-      { name: "description", content: "Individually named wooden cottages set along garden paths, with porches, prayer flags, and warm evening lighting." },
+      {
+        name: "description",
+        content:
+          "Individually named wooden cottages set along garden paths, with porches, prayer flags, and warm evening lighting.",
+      },
       { property: "og:title", content: "Cottages at Laligurans" },
-      { property: "og:description", content: "Wooden cottages tucked into the garden. Each with its own porch and view." },
+      {
+        property: "og:description",
+        content: "Wooden cottages tucked into the garden. Each with its own porch and view.",
+      },
     ],
   }),
   component: Cottages,
 });
 
 const COTTAGES = [
-  { name: "Cottage 1 — Laligurans", imgKey: "cottages.c1", tag: "Garden porch · 2 guests", body: "A cosy timber cottage on the main garden path, framed by bougainvillea and warm string lights. The porch faces east — perfect for the morning light." },
-  { name: "Cottage 2 — Bangi View", imgKey: "cottages.c2", tag: "Ridge view · 2 guests", body: "Set slightly higher on the slope with a wide view across the ridge. Stone base, timber walls, wooden rocking chairs on the porch." },
-  { name: "Cottage 3 — Forest Nook", imgKey: "cottages.c3", tag: "Forest side · 2 guests", body: "Tucked closer to the treeline, with a small window seat and locally woven textiles inside. The quietest cottage on the property." },
+  {
+    name: "Cottage 1 — Laligurans",
+    imgKey: "cottages.c1",
+    tag: "Garden porch · 2 guests",
+    body: "A cosy timber cottage on the main garden path, framed by bougainvillea and warm string lights. The porch faces east — perfect for the morning light.",
+  },
+  {
+    name: "Cottage 2 — Bangi View",
+    imgKey: "cottages.c2",
+    tag: "Ridge view · 2 guests",
+    body: "Set slightly higher on the slope with a wide view across the ridge. Stone base, timber walls, wooden rocking chairs on the porch.",
+  },
+  {
+    name: "Cottage 3 — Forest Nook",
+    imgKey: "cottages.c3",
+    tag: "Forest side · 2 guests",
+    body: "Tucked closer to the treeline, with a small window seat and locally woven textiles inside. The quietest cottage on the property.",
+  },
 ] as const;
 
 function Cottages() {
@@ -53,11 +75,18 @@ function Cottages() {
                   </div>
                 </div>
                 <div className="md:col-span-5">
-                  <div className="text-xs font-semibold uppercase tracking-widest text-accent">{c.tag}</div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-accent">
+                    {c.tag}
+                  </div>
                   <h2 className="mt-3 text-3xl font-bold md:text-4xl">{c.name}</h2>
                   <p className="mt-4 text-muted-foreground leading-relaxed">{c.body}</p>
                   <ul className="mt-5 grid gap-2 text-sm">
-                    {["Private porch & seating", "Warm bedding & local textiles", "Garden & ridge views", "String lights at night"].map((x) => (
+                    {[
+                      "Private porch & seating",
+                      "Warm bedding & local textiles",
+                      "Garden & ridge views",
+                      "String lights at night",
+                    ].map((x) => (
                       <li key={x} className="flex items-center gap-2 text-foreground/90">
                         <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                         {x}
@@ -65,8 +94,12 @@ function Cottages() {
                     ))}
                   </ul>
                   <div className="mt-6 flex flex-wrap gap-3">
-                    <Link to="/contact" className="btn-primary">Check availability</Link>
-                    <Link to="/gallery" className="btn-ghost">More photos</Link>
+                    <Link to="/contact" className="btn-primary">
+                      Check availability
+                    </Link>
+                    <Link to="/gallery" className="btn-ghost">
+                      More photos
+                    </Link>
                   </div>
                 </div>
               </article>

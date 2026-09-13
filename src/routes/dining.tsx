@@ -7,19 +7,44 @@ export const Route = createFileRoute("/dining")({
   head: () => ({
     meta: [
       { title: "Dining & Menu — Laligurans Agro Solutions" },
-      { name: "description", content: "Home-style Nepali thali, tandoori chicken, tikka and grilled skewers — cooked with vegetables from our own farm wherever possible." },
+      {
+        name: "description",
+        content:
+          "Home-style Nepali thali, tandoori chicken, tikka and grilled skewers — cooked with vegetables from our own farm wherever possible.",
+      },
       { property: "og:title", content: "Dining at Laligurans — Farm-to-table Nepali cooking" },
-      { property: "og:description", content: "Thali, tandoori, and grilled skewers, served from the garden." },
+      {
+        property: "og:description",
+        content: "Thali, tandoori, and grilled skewers, served from the garden.",
+      },
     ],
   }),
   component: Dining,
 });
 
 const MENU: { name: string; body: string; tag: string; imgKey?: string }[] = [
-  { name: "Nepali Thali — Dal Bhat Set", body: "Steamed rice, seasonal dal, saag, tarkari (vegetable curry), homemade achar, and papad. Vegetables straight from the farm.", tag: "Signature", imgKey: "dining.menu.thali" },
-  { name: "Tandoori Whole Chicken", body: "Marinated overnight in yoghurt and hill spices, then cooked whole until the edges just char.", tag: "Sharing plate", imgKey: "dining.menu.grill" },
-  { name: "Chicken Tikka & Wings", body: "Served with a bright mint-lemon dip and a small pickled onion-carrot salad on the side.", tag: "Small plate" },
-  { name: "Grilled Meat Skewers", body: "Cooked over open flame, with a crunchy onion-carrot salad tossed in lime and coriander.", tag: "From the grill" },
+  {
+    name: "Nepali Thali — Dal Bhat Set",
+    body: "Steamed rice, seasonal dal, saag, tarkari (vegetable curry), homemade achar, and papad. Vegetables straight from the farm.",
+    tag: "Signature",
+    imgKey: "dining.menu.thali",
+  },
+  {
+    name: "Tandoori Whole Chicken",
+    body: "Marinated overnight in yoghurt and hill spices, then cooked whole until the edges just char.",
+    tag: "Sharing plate",
+    imgKey: "dining.menu.grill",
+  },
+  {
+    name: "Chicken Tikka & Wings",
+    body: "Served with a bright mint-lemon dip and a small pickled onion-carrot salad on the side.",
+    tag: "Small plate",
+  },
+  {
+    name: "Grilled Meat Skewers",
+    body: "Cooked over open flame, with a crunchy onion-carrot salad tossed in lime and coriander.",
+    tag: "From the grill",
+  },
 ];
 
 function Dining() {
@@ -40,13 +65,21 @@ function Dining() {
               <span className="eyebrow">Farm-to-table</span>
               <h2 className="mt-3 text-3xl font-bold md:text-4xl">Most of it grew here.</h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Greens for the saag, tomatoes for the achar, herbs for the marinades — most of what our kitchen uses comes from the beds right outside. What we don't grow, we source from farms and producers around Bangi.
+                Greens for the saag, tomatoes for the achar, herbs for the marinades — most of what
+                our kitchen uses comes from the beds right outside. What we don't grow, we source
+                from farms and producers around Bangi.
               </p>
               <p className="mt-3 text-muted-foreground leading-relaxed">
-                Tell us in advance about dietary needs — vegetarian, no onion & garlic, spice level — and we'll cook to suit.
+                Tell us in advance about dietary needs — vegetarian, no onion & garlic, spice level
+                — and we'll cook to suit.
               </p>
             </div>
-            <EditableImage imgKey="dining.farm" alt="Farm garden" loading="lazy" className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl" />
+            <EditableImage
+              imgKey="dining.farm"
+              alt="Farm garden"
+              loading="lazy"
+              className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl"
+            />
           </div>
         </div>
       </section>
@@ -58,7 +91,10 @@ function Dining() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {MENU.map((m) => (
-              <article key={m.name} className="group overflow-hidden rounded-3xl border border-border bg-card">
+              <article
+                key={m.name}
+                className="group overflow-hidden rounded-3xl border border-border bg-card"
+              >
                 {m.imgKey && (
                   <div className="overflow-hidden">
                     <EditableImage
@@ -70,7 +106,9 @@ function Dining() {
                   </div>
                 )}
                 <div className="p-6">
-                  <div className="text-xs font-semibold uppercase tracking-widest text-accent">{m.tag}</div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-accent">
+                    {m.tag}
+                  </div>
                   <h3 className="mt-2 font-display text-2xl font-bold">{m.name}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{m.body}</p>
                 </div>
@@ -84,7 +122,9 @@ function Dining() {
               Let us know a day or two ahead and the kitchen will plan around it.
             </p>
             <div className="mt-5">
-              <Link to="/contact" className="btn-primary">Contact the kitchen</Link>
+              <Link to="/contact" className="btn-primary">
+                Contact the kitchen
+              </Link>
             </div>
           </div>
         </div>

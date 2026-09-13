@@ -34,14 +34,34 @@ export type SiteImageDef = {
 
 export const SITE_IMAGES = [
   // Home
-  { id: "home.hero", label: "Home — main hero (daytime cottages)", section: "Home", defaultSrc: HERO },
+  {
+    id: "home.hero",
+    label: "Home — main hero (daytime cottages)",
+    section: "Home",
+    defaultSrc: HERO,
+  },
   { id: "home.farm", label: "Home — farm / crops image", section: "Home", defaultSrc: FARM },
-  { id: "home.bonfire", label: "Home — evening CTA background (bonfire)", section: "Home", defaultSrc: FIRE },
+  {
+    id: "home.bonfire",
+    label: "Home — evening CTA background (bonfire)",
+    section: "Home",
+    defaultSrc: FIRE,
+  },
   { id: "home.logo", label: "Home — resort logo watermark", section: "Home", defaultSrc: LOGO_URL },
   { id: "home.nav.cottages", label: "Home — quick nav: Cottages", section: "Home", defaultSrc: C1 },
-  { id: "home.nav.facilities", label: "Home — quick nav: Facilities", section: "Home", defaultSrc: SWING },
+  {
+    id: "home.nav.facilities",
+    label: "Home — quick nav: Facilities",
+    section: "Home",
+    defaultSrc: SWING,
+  },
   { id: "home.nav.dining", label: "Home — quick nav: Dining", section: "Home", defaultSrc: GAZEBO },
-  { id: "home.nav.gallery", label: "Home — quick nav: Gallery", section: "Home", defaultSrc: LIGHTS },
+  {
+    id: "home.nav.gallery",
+    label: "Home — quick nav: Gallery",
+    section: "Home",
+    defaultSrc: LIGHTS,
+  },
   { id: "home.nav.contact", label: "Home — quick nav: Contact", section: "Home", defaultSrc: SIGN },
 
   // About
@@ -51,46 +71,151 @@ export const SITE_IMAGES = [
 
   // Cottages
   { id: "cottages.hero", label: "Cottages — hero", section: "Cottages", defaultSrc: HERO },
-  { id: "cottages.c1", label: "Cottage 1 — Laligurans (night, prayer flags)", section: "Cottages", defaultSrc: C1 },
-  { id: "cottages.c2", label: "Cottage 2 — row view at night", section: "Cottages", defaultSrc: ROW },
-  { id: "cottages.c3", label: "Cottage 3 — hillside cottages", section: "Cottages", defaultSrc: HERO },
+  {
+    id: "cottages.c1",
+    label: "Cottage 1 — Laligurans (night, prayer flags)",
+    section: "Cottages",
+    defaultSrc: C1,
+  },
+  {
+    id: "cottages.c2",
+    label: "Cottage 2 — row view at night",
+    section: "Cottages",
+    defaultSrc: ROW,
+  },
+  {
+    id: "cottages.c3",
+    label: "Cottage 3 — hillside cottages",
+    section: "Cottages",
+    defaultSrc: HERO,
+  },
 
   // Dining
-  { id: "dining.hero", label: "Dining — hero (garden gazebo)", section: "Dining", defaultSrc: GAZEBO },
-  { id: "dining.farm", label: "Dining — farm side image (cabbage field)", section: "Dining", defaultSrc: FARM },
+  {
+    id: "dining.hero",
+    label: "Dining — hero (garden gazebo)",
+    section: "Dining",
+    defaultSrc: GAZEBO,
+  },
+  {
+    id: "dining.farm",
+    label: "Dining — farm side image (cabbage field)",
+    section: "Dining",
+    defaultSrc: FARM,
+  },
   { id: "dining.menu.thali", label: "Dining — menu: Thali", section: "Dining", defaultSrc: GAZEBO },
-  { id: "dining.menu.grill", label: "Dining — menu: Tandoori / Grill", section: "Dining", defaultSrc: FIRE },
+  {
+    id: "dining.menu.grill",
+    label: "Dining — menu: Tandoori / Grill",
+    section: "Dining",
+    defaultSrc: FIRE,
+  },
 
   // Facilities
-  { id: "facilities.hero", label: "Facilities — hero (garden swing)", section: "Facilities", defaultSrc: SWING },
-  { id: "facilities.farm", label: "Facilities — working farm", section: "Facilities", defaultSrc: FARM },
-  { id: "facilities.bonfire", label: "Facilities — bonfire", section: "Facilities", defaultSrc: FIRE },
-  { id: "facilities.swing", label: "Facilities — garden swings", section: "Facilities", defaultSrc: SWING },
-  { id: "facilities.lights", label: "Facilities — ambient lights walkway", section: "Facilities", defaultSrc: LIGHTS },
+  {
+    id: "facilities.hero",
+    label: "Facilities — hero (garden swing)",
+    section: "Facilities",
+    defaultSrc: SWING,
+  },
+  {
+    id: "facilities.farm",
+    label: "Facilities — working farm",
+    section: "Facilities",
+    defaultSrc: FARM,
+  },
+  {
+    id: "facilities.bonfire",
+    label: "Facilities — bonfire",
+    section: "Facilities",
+    defaultSrc: FIRE,
+  },
+  {
+    id: "facilities.swing",
+    label: "Facilities — garden swings",
+    section: "Facilities",
+    defaultSrc: SWING,
+  },
+  {
+    id: "facilities.lights",
+    label: "Facilities — ambient lights walkway",
+    section: "Facilities",
+    defaultSrc: LIGHTS,
+  },
 
   // Location
-  { id: "location.hero", label: "Location — hero (day cottages & hills)", section: "Location", defaultSrc: HERO },
-  { id: "location.pheasant", label: "Location — landscape / fields", section: "Location", defaultSrc: FARM },
-  { id: "location.farm", label: "Location — small farm inset", section: "Location", defaultSrc: FARM },
-  { id: "location.temple", label: "Location — Malarani Temple area", section: "Location", defaultSrc: HERO },
-  { id: "location.river", label: "Location — nearby river / fishing", section: "Location", defaultSrc: FARM },
+  {
+    id: "location.hero",
+    label: "Location — hero (day cottages & hills)",
+    section: "Location",
+    defaultSrc: HERO,
+  },
+  {
+    id: "location.pheasant",
+    label: "Location — landscape / fields",
+    section: "Location",
+    defaultSrc: FARM,
+  },
+  {
+    id: "location.farm",
+    label: "Location — small farm inset",
+    section: "Location",
+    defaultSrc: FARM,
+  },
+  {
+    id: "location.temple",
+    label: "Location — Malarani Temple area",
+    section: "Location",
+    defaultSrc: HERO,
+  },
+  {
+    id: "location.river",
+    label: "Location — nearby river / fishing",
+    section: "Location",
+    defaultSrc: FARM,
+  },
 
   // Contact
-  { id: "contact.hero", label: "Contact — hero (entrance sign)", section: "Contact", defaultSrc: SIGN },
+  {
+    id: "contact.hero",
+    label: "Contact — hero (entrance sign)",
+    section: "Contact",
+    defaultSrc: SIGN,
+  },
 
   // Gallery (12 tiles)
   { id: "gallery.hero", label: "Gallery — hero", section: "Gallery", defaultSrc: LIGHTS },
   { id: "gallery.1", label: "Gallery 1 — Daytime cottages", section: "Gallery", defaultSrc: HERO },
-  { id: "gallery.2", label: "Gallery 2 — Cabbage field & mountains", section: "Gallery", defaultSrc: FARM },
+  {
+    id: "gallery.2",
+    label: "Gallery 2 — Cabbage field & mountains",
+    section: "Gallery",
+    defaultSrc: FARM,
+  },
   { id: "gallery.3", label: "Gallery 3 — Entrance sign", section: "Gallery", defaultSrc: SIGN },
   { id: "gallery.4", label: "Gallery 4 — Cottage 1 at night", section: "Gallery", defaultSrc: C1 },
-  { id: "gallery.5", label: "Gallery 5 — Cottage row at night", section: "Gallery", defaultSrc: ROW },
+  {
+    id: "gallery.5",
+    label: "Gallery 5 — Cottage row at night",
+    section: "Gallery",
+    defaultSrc: ROW,
+  },
   { id: "gallery.6", label: "Gallery 6 — Garden gazebo", section: "Gallery", defaultSrc: GAZEBO },
   { id: "gallery.7", label: "Gallery 7 — Walkway lights", section: "Gallery", defaultSrc: LIGHTS },
   { id: "gallery.8", label: "Gallery 8 — Garden swing", section: "Gallery", defaultSrc: SWING },
   { id: "gallery.9", label: "Gallery 9 — Bonfire", section: "Gallery", defaultSrc: FIRE },
-  { id: "gallery.10", label: "Gallery 10 — Logo signage", section: "Gallery", defaultSrc: LOGO_URL },
-  { id: "gallery.11", label: "Gallery 11 — Cottages & hills", section: "Gallery", defaultSrc: HERO },
+  {
+    id: "gallery.10",
+    label: "Gallery 10 — Logo signage",
+    section: "Gallery",
+    defaultSrc: LOGO_URL,
+  },
+  {
+    id: "gallery.11",
+    label: "Gallery 11 — Cottages & hills",
+    section: "Gallery",
+    defaultSrc: HERO,
+  },
   { id: "gallery.12", label: "Gallery 12 — Farm produce", section: "Gallery", defaultSrc: FARM },
 ] as const satisfies readonly SiteImageDef[];
 
