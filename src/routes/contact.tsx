@@ -152,8 +152,11 @@ function Contact() {
           background: var(--color-background);
           padding: 0.7rem 0.9rem;
           font-size: 0.95rem;
-          color: var(--color-foreground);
+          color: #ffffff;
           transition: border-color .15s, box-shadow .15s;
+        }
+        .input::placeholder {
+          color: rgba(255, 255, 255, 0.55);
         }
         .input:focus {
           outline: none;
