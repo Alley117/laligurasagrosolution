@@ -6,7 +6,11 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Laligurans Agro Solutions — Hillside Cottages in Arghakhanchi, Nepal" },
-      { name: "description", content: "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple." },
+      {
+        name: "description",
+        content:
+          "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple.",
+      },
     ],
   }),
   component: Home,
@@ -21,10 +25,26 @@ const QUICK_NAV = [
 ] as const;
 
 const PRODUCE = [
-  { icon: "🥚", title: "Farm-fresh eggs", note: "From our own local hens and free-roaming wild hens." },
-  { icon: "🥛", title: "Buffalo milk & curd", note: "Milked each morning from our resident buffalo herd." },
-  { icon: "🐔", title: "Chicken & meat", note: "Local hens and wild hens raised on-site, no shortcuts." },
-  { icon: "🥬", title: "Seasonal crops", note: "Cabbage, mustard greens, potato, chillies — grown right here." },
+  {
+    icon: "🥚",
+    title: "Farm-fresh eggs",
+    note: "From our own local hens and free-roaming wild hens.",
+  },
+  {
+    icon: "🥛",
+    title: "Buffalo milk & curd",
+    note: "Milked each morning from our resident buffalo herd.",
+  },
+  {
+    icon: "🐔",
+    title: "Chicken & meat",
+    note: "Local hens and wild hens raised on-site, no shortcuts.",
+  },
+  {
+    icon: "🥬",
+    title: "Seasonal crops",
+    note: "Cabbage, mustard greens, potato, chillies — grown right here.",
+  },
 ];
 
 const NEARBY = [
@@ -73,18 +93,23 @@ function Home() {
           <div className="max-w-3xl text-cream">
             <span className="eyebrow !text-cream/95">Malarani-5 · Bangi · Arghakhanchi</span>
             <h1 className="mt-4 text-5xl font-bold leading-[1] md:text-7xl lg:text-8xl">
-              Where the hills<br />
+              Where the hills
+              <br />
               <span className="italic text-accent">breathe slower.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base text-cream/95 md:text-lg">
-              Wooden cottages on a working agro-farm — buffalo, hens, and a
-              full vegetable garden a few steps from your door. Meals cooked
-              from what we raise and grow, and evenings by the bonfire under
-              Himalayan stars.
+              Wooden cottages on a working agro-farm — buffalo, hens, and a full vegetable garden a
+              few steps from your door. Meals cooked from what we raise and grow, and evenings by
+              the bonfire under Himalayan stars.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/contact" className="btn-primary">Book your stay</Link>
-              <Link to="/cottages" className="btn-ghost !text-cream !border-cream/40 hover:!bg-cream/10">
+              <Link to="/contact" className="btn-primary">
+                Book your stay
+              </Link>
+              <Link
+                to="/cottages"
+                className="btn-ghost !text-cream !border-cream/40 hover:!bg-cream/10"
+              >
                 See the cottages
               </Link>
             </div>
@@ -110,8 +135,8 @@ function Home() {
               </h2>
             </div>
             <p className="max-w-sm text-muted-foreground">
-              Cottages, a working farm, hearty Nepali meals cooked from our own
-              produce, and evenings that end by the fire.
+              Cottages, a working farm, hearty Nepali meals cooked from our own produce, and
+              evenings that end by the fire.
             </p>
           </div>
 
@@ -154,8 +179,8 @@ function Home() {
             <div className="absolute -bottom-6 -right-4 hidden max-w-[240px] rounded-2xl bg-background p-5 shadow-xl md:block">
               <div className="text-3xl font-bold text-accent font-display">100% ours</div>
               <p className="mt-1 text-sm text-cream/90">
-                Eggs, milk, meat and vegetables — raised and grown on this same
-                hillside, then walked into the kitchen.
+                Eggs, milk, meat and vegetables — raised and grown on this same hillside, then
+                walked into the kitchen.
               </p>
             </div>
           </div>
@@ -167,13 +192,13 @@ function Home() {
             <p className="mt-5 text-muted-foreground leading-relaxed">
               Laligurans Agro Solutions is a working farm first. We raise our own
               <strong> buffalo</strong> for milk and curd, keep both
-              <strong> local hens and wild hens</strong> for eggs and meat, and grow
-              our own seasonal <strong>vegetables and crops</strong> across the
-              terraced fields around the cottages.
+              <strong> local hens and wild hens</strong> for eggs and meat, and grow our own
+              seasonal <strong>vegetables and crops</strong> across the terraced fields around the
+              cottages.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              What lands on your plate at breakfast or dinner was, more often
-              than not, in the garden or the shed that morning.
+              What lands on your plate at breakfast or dinner was, more often than not, in the
+              garden or the shed that morning.
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {PRODUCE.map((p) => (
@@ -190,7 +215,9 @@ function Home() {
               ))}
             </ul>
             <div className="mt-8">
-              <Link to="/about" className="btn-ghost">Read our story →</Link>
+              <Link to="/about" className="btn-ghost">
+                Read our story →
+              </Link>
             </div>
           </div>
         </div>
@@ -205,25 +232,20 @@ function Home() {
               Temples, rivers, and quiet hilltop walks.
             </h2>
             <p className="mt-4 text-muted-foreground">
-              We sit inside one of Arghakhanchi's most scenic pockets. Guests
-              often plan their days around a temple visit, an afternoon by the
-              river, or just a slow walk along the terraces.
+              We sit inside one of Arghakhanchi's most scenic pockets. Guests often plan their days
+              around a temple visit, an afternoon by the river, or just a slow walk along the
+              terraces.
             </p>
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {NEARBY.map((n) => (
-              <div
-                key={n.title}
-                className="rounded-3xl border border-border bg-card p-6 shadow-sm"
-              >
+              <div key={n.title} className="rounded-3xl border border-border bg-card p-6 shadow-sm">
                 <div className="text-xs font-semibold uppercase tracking-widest text-accent">
                   {n.distance}
                 </div>
                 <h3 className="mt-2 font-display text-xl font-bold">{n.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                  {n.body}
-                </p>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{n.body}</p>
               </div>
             ))}
           </div>
@@ -245,11 +267,13 @@ function Home() {
             Fire, prayer flags, and the quiet of the hills.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-cream/95">
-            When the sun drops behind the ridge, the lanterns come on and the
-            bonfire is lit. Bring a cup of tea and stay a while.
+            When the sun drops behind the ridge, the lanterns come on and the bonfire is lit. Bring
+            a cup of tea and stay a while.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link to="/contact" className="btn-primary">Book Now</Link>
+            <Link to="/contact" className="btn-primary">
+              Book Now
+            </Link>
             <a
               href="tel:+9779768843117"
               className="btn-ghost !text-cream !border-cream/40 hover:!bg-cream/10"

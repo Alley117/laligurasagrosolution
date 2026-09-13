@@ -7,9 +7,17 @@ export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
       { title: "Gallery — Laligurans Agro Solutions" },
-      { name: "description", content: "Scenery, cottages, dining, evening ambience, and the farm & garden at Laligurans Agro Solutions in Arghakhanchi." },
+      {
+        name: "description",
+        content:
+          "Scenery, cottages, dining, evening ambience, and the farm & garden at Laligurans Agro Solutions in Arghakhanchi.",
+      },
       { property: "og:title", content: "Gallery — Laligurans Agro Solutions" },
-      { property: "og:description", content: "Photos from around the resort — hillside views, wooden cottages, evening lights, and the farm." },
+      {
+        property: "og:description",
+        content:
+          "Photos from around the resort — hillside views, wooden cottages, evening lights, and the farm.",
+      },
     ],
   }),
   component: Gallery,
@@ -113,7 +121,13 @@ function GalleryTile({
   );
 }
 
-function Lightbox({ photo, onClose }: { photo: { key: string; alt: string }; onClose: () => void }) {
+function Lightbox({
+  photo,
+  onClose,
+}: {
+  photo: { key: string; alt: string };
+  onClose: () => void;
+}) {
   const src = useSiteImage(photo.key);
   return (
     <div

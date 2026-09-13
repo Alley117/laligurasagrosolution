@@ -1,12 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useMemo, useState } from "react";
-import {
-  SITE_IMAGES,
-  clearAllOverrides,
-  readOverrides,
-  setOverride,
-} from "@/lib/site-images";
+import { SITE_IMAGES, clearAllOverrides, readOverrides, setOverride } from "@/lib/site-images";
 import { useSiteImage } from "@/hooks/useSiteImage";
 import adminBgAsset from "@/assets/admin-login-bg.jpg.asset.json";
 import {
@@ -27,10 +22,7 @@ export const Route = createFileRoute("/admin")({
     return { unlocked: status.unlocked, is_active: site.is_active };
   },
   head: () => ({
-    meta: [
-      { title: "Site Admin — Laligurans" },
-      { name: "robots", content: "noindex, nofollow" },
-    ],
+    meta: [{ title: "Site Admin — Laligurans" }, { name: "robots", content: "noindex, nofollow" }],
   }),
   component: Admin,
 });
@@ -50,7 +42,6 @@ function LoginGate() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showHelp, setShowHelp] = useState(false);
-
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -123,13 +114,10 @@ function LoginGate() {
             <p className="font-semibold text-white">Reset your admin password</p>
             <ol className="mt-2 list-decimal space-y-1.5 pl-4">
               <li>
-                Ask for a reset from your project owner account — the password is stored
-                privately and can be replaced with a new one at any time.
+                Ask for a reset from your project owner account — the password is stored privately
+                and can be replaced with a new one at any time.
               </li>
-              <li>
-                Once it's replaced, come back to this page and sign in with the new
-                password.
-              </li>
+              <li>Once it's replaced, come back to this page and sign in with the new password.</li>
             </ol>
             <p className="mt-3">
               Need help right away? Contact{" "}
@@ -147,7 +135,6 @@ function LoginGate() {
             </p>
           </div>
         )}
-
       </form>
     </div>
   );
@@ -210,9 +197,7 @@ function AdminPanel({ initialActive }: { initialActive: boolean }) {
         {/* Activation toggle */}
         <section
           className={`mt-8 rounded-2xl border p-5 md:p-6 ${
-            active
-              ? "border-border bg-card"
-              : "border-destructive/40 bg-destructive/5"
+            active ? "border-border bg-card" : "border-destructive/40 bg-destructive/5"
           }`}
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
@@ -232,36 +217,27 @@ function AdminPanel({ initialActive }: { initialActive: boolean }) {
                   ? "Visitors can browse the whole site normally."
                   : "Visitors see a maintenance page. This admin page stays reachable so you can turn the site back on."}
               </p>
-              {msg && (
-                <p className="mt-2 text-xs font-medium text-foreground/90">{msg}</p>
-              )}
+              {msg && <p className="mt-2 text-xs font-medium text-foreground/90">{msg}</p>}
             </div>
             <button
               onClick={() => onToggle(!active)}
               disabled={saving}
-              className={`${
-                active ? "btn-ghost" : "btn-primary"
-              } disabled:opacity-60`}
+              className={`${active ? "btn-ghost" : "btn-primary"} disabled:opacity-60`}
             >
-              {saving
-                ? "Saving…"
-                : active
-                  ? "Deactivate website"
-                  : "Activate website"}
+              {saving ? "Saving…" : active ? "Deactivate website" : "Activate website"}
             </button>
           </div>
         </section>
 
         <InquiriesPanel />
 
-
         {/* Photo manager */}
         <div className="mt-12 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold">Manage site photos</h2>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-              Upload a new photo or paste an image URL for any slot on the site.
-              Photo overrides are saved in <strong>this browser only</strong>.
+              Upload a new photo or paste an image URL for any slot on the site. Photo overrides are
+              saved in <strong>this browser only</strong>.
             </p>
           </div>
           <button
@@ -445,13 +421,20 @@ function InquiriesPanel() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="font-display text-2xl font-bold">
-            Booking inquiries{unread > 0 && <span className="ml-2 rounded-full bg-accent px-2 py-0.5 text-xs font-semibold text-accent-foreground">{unread} new</span>}
+            Booking inquiries
+            {unread > 0 && (
+              <span className="ml-2 rounded-full bg-accent px-2 py-0.5 text-xs font-semibold text-accent-foreground">
+                {unread} new
+              </span>
+            )}
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Every request sent from the website's booking form is saved here.
           </p>
         </div>
-        <button onClick={refresh} className="btn-ghost text-sm">Refresh</button>
+        <button onClick={refresh} className="btn-ghost text-sm">
+          Refresh
+        </button>
       </div>
 
       {err && <p className="mt-4 text-sm text-destructive">{err}</p>}
@@ -474,11 +457,15 @@ function InquiriesPanel() {
             </div>
             <div className="mt-2 grid gap-1 text-sm">
               <div>
-                <a href={`mailto:${r.email}`} className="text-accent underline">{r.email}</a>
+                <a href={`mailto:${r.email}`} className="text-accent underline">
+                  {r.email}
+                </a>
                 {r.phone && (
                   <>
                     {" · "}
-                    <a href={`tel:${r.phone}`} className="text-accent underline">{r.phone}</a>
+                    <a href={`tel:${r.phone}`} className="text-accent underline">
+                      {r.phone}
+                    </a>
                   </>
                 )}
               </div>

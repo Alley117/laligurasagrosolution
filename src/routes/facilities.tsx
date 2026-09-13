@@ -7,19 +7,46 @@ export const Route = createFileRoute("/facilities")({
   head: () => ({
     meta: [
       { title: "Facilities & Amenities — Laligurans Agro Solutions" },
-      { name: "description", content: "Working vegetable farm, bonfire area, garden swings, flower gardens, colourful ambient lighting, and on-site parking." },
+      {
+        name: "description",
+        content:
+          "Working vegetable farm, bonfire area, garden swings, flower gardens, colourful ambient lighting, and on-site parking.",
+      },
       { property: "og:title", content: "Facilities at Laligurans" },
-      { property: "og:description", content: "Farm walks, bonfires, garden swings, and warm evening light." },
+      {
+        property: "og:description",
+        content: "Farm walks, bonfires, garden swings, and warm evening light.",
+      },
     ],
   }),
   component: Facilities,
 });
 
 const ITEMS = [
-  { title: "Working vegetable garden", body: "Walk through the beds — greens, tomatoes, herbs, and whatever is in season. Most of it ends up on your plate.", imgKey: "facilities.farm", size: "md:col-span-2 md:row-span-2" },
-  { title: "Evening bonfire", body: "Lit most evenings. Bring your tea, pull up a stool.", imgKey: "facilities.bonfire", size: "md:col-span-2" },
-  { title: "Garden swings & outdoor seating", body: "Tucked under bougainvillea and lanterns.", imgKey: "facilities.swing", size: "" },
-  { title: "Ambient lighting at night", body: "Colourful lanterns and string lights across the grounds.", imgKey: "facilities.lights", size: "" },
+  {
+    title: "Working vegetable garden",
+    body: "Walk through the beds — greens, tomatoes, herbs, and whatever is in season. Most of it ends up on your plate.",
+    imgKey: "facilities.farm",
+    size: "md:col-span-2 md:row-span-2",
+  },
+  {
+    title: "Evening bonfire",
+    body: "Lit most evenings. Bring your tea, pull up a stool.",
+    imgKey: "facilities.bonfire",
+    size: "md:col-span-2",
+  },
+  {
+    title: "Garden swings & outdoor seating",
+    body: "Tucked under bougainvillea and lanterns.",
+    imgKey: "facilities.swing",
+    size: "",
+  },
+  {
+    title: "Ambient lighting at night",
+    body: "Colourful lanterns and string lights across the grounds.",
+    imgKey: "facilities.lights",
+    size: "",
+  },
 ] as const;
 
 const EXTRAS = [
@@ -46,7 +73,10 @@ function Facilities() {
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="grid gap-4 md:grid-cols-4 md:auto-rows-[240px]">
             {ITEMS.map((it) => (
-              <div key={it.title} className={`group relative overflow-hidden rounded-3xl ${it.size}`}>
+              <div
+                key={it.title}
+                className={`group relative overflow-hidden rounded-3xl ${it.size}`}
+              >
                 <EditableImage
                   imgKey={it.imgKey}
                   alt={it.title}
@@ -67,10 +97,15 @@ function Facilities() {
       <section className="section-pad bg-secondary/60 section-light">
         <div className="mx-auto max-w-5xl px-5 md:px-8">
           <span className="eyebrow">Also on site</span>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">Little comforts around the property.</h2>
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+            Little comforts around the property.
+          </h2>
           <ul className="mt-8 grid gap-3 md:grid-cols-2">
             {EXTRAS.map((e) => (
-              <li key={e} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
+              <li
+                key={e}
+                className="flex items-start gap-3 rounded-xl border border-border bg-card p-4"
+              >
                 <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" />
                 <span className="text-sm text-foreground/90">{e}</span>
               </li>

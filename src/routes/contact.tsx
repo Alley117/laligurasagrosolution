@@ -9,7 +9,11 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact & Booking — Laligurans Agro Solutions" },
-      { name: "description", content: "Send us a booking inquiry, call, or write. Malarani-5, Bangi, Arghakhanchi, Nepal." },
+      {
+        name: "description",
+        content:
+          "Send us a booking inquiry, call, or write. Malarani-5, Bangi, Arghakhanchi, Nepal.",
+      },
       { property: "og:title", content: "Contact & Booking — Laligurans" },
       { property: "og:description", content: "Book a cottage or ask us anything about your stay." },
     ],
@@ -32,7 +36,10 @@ function Contact() {
     e.preventDefault();
     const f = e.currentTarget;
     const get = (name: string) =>
-      (f.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null)?.value ?? "";
+      (
+        f.elements.namedItem(name) as
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null
+      )?.value ?? "";
 
     const payload = {
       name: get("name"),
@@ -61,7 +68,9 @@ function Contact() {
     setError(null);
     try {
       await send({ data: payload });
-      setWaLink(`https://wa.me/${PHONE.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(summary)}`);
+      setWaLink(
+        `https://wa.me/${PHONE.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(summary)}`,
+      );
       setSent(true);
     } catch {
       setError("We couldn't send that. Please try again, or write to us directly.");
@@ -83,30 +92,55 @@ function Contact() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-5 md:px-8">
           <aside className="md:col-span-2 space-y-6">
             <div className="rounded-3xl border border-border bg-card p-6">
-              <div className="text-xs font-semibold uppercase tracking-widest text-accent">Reach us</div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-accent">
+                Reach us
+              </div>
               <ul className="mt-4 space-y-4 text-sm">
                 <li>
                   <div className="text-muted-foreground">Phone / WhatsApp</div>
-                  <a href={`tel:${PHONE}`} className="font-medium text-foreground hover:text-accent">+977 98511 55485</a>
+                  <a
+                    href={`tel:${PHONE}`}
+                    className="font-medium text-foreground hover:text-accent"
+                  >
+                    +977 98511 55485
+                  </a>
                 </li>
                 <li>
                   <div className="text-muted-foreground">Email</div>
-                  <a href={`mailto:${BOOKING_EMAIL}`} className="font-medium text-foreground hover:text-accent break-all">{BOOKING_EMAIL}</a>
+                  <a
+                    href={`mailto:${BOOKING_EMAIL}`}
+                    className="font-medium text-foreground hover:text-accent break-all"
+                  >
+                    {BOOKING_EMAIL}
+                  </a>
                 </li>
                 <li>
                   <div className="text-muted-foreground">Address</div>
                   <p className="font-medium text-foreground">
-                    Malarani-5, Bangi<br />
+                    Malarani-5, Bangi
+                    <br />
                     Arghakhanchi, Lumbini Province, Nepal
                   </p>
-                  <a href="https://maps.app.goo.gl/3bZst6WvjZioSvXs6" target="_blank" rel="noreferrer" className="mt-1 inline-block text-sm font-medium text-accent hover:underline">
+                  <a
+                    href="https://maps.app.goo.gl/3bZst6WvjZioSvXs6"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-1 inline-block text-sm font-medium text-accent hover:underline"
+                  >
                     Open in Google Maps →
                   </a>
                 </li>
                 <li>
                   <div className="text-muted-foreground">Follow along</div>
                   <div className="mt-1 flex gap-2">
-                    <a href="https://www.facebook.com/laliguransagrosolutions" target="_blank" rel="noreferrer" className="rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:border-accent hover:text-accent">Facebook</a>
+                    <a
+                      href="https://www.facebook.com/laliguransagrosolutions"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:border-accent hover:text-accent"
+                    >
+                      Facebook
+                    </a>
                   </div>
                 </li>
               </ul>
@@ -124,38 +158,79 @@ function Contact() {
 
           <div className="md:col-span-3">
             <div className="rounded-3xl border border-border bg-card p-6 md:p-10">
-              <div className="text-xs font-semibold uppercase tracking-widest text-accent">Booking inquiry</div>
-              <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Tell us about your stay.</h2>
+              <div className="text-xs font-semibold uppercase tracking-widest text-accent">
+                Booking inquiry
+              </div>
+              <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">
+                Tell us about your stay.
+              </h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Your request is delivered to the resort team and saved in our booking inbox. You can also reach us at <span className="font-medium text-foreground">{BOOKING_EMAIL}</span>.
+                Your request is delivered to the resort team and saved in our booking inbox. You can
+                also reach us at{" "}
+                <span className="font-medium text-foreground">{BOOKING_EMAIL}</span>.
               </p>
 
               {sent ? (
                 <div className="mt-8 rounded-2xl bg-primary/10 p-6 text-primary">
                   <h3 className="font-display text-xl font-bold">Thank you!</h3>
                   <p className="mt-2 text-sm text-foreground/90">
-                    We've received your inquiry and will reply soon. For the fastest response, tap below to send the same details on WhatsApp.
+                    We've received your inquiry and will reply soon. For the fastest response, tap
+                    below to send the same details on WhatsApp.
                   </p>
                   <div className="mt-4 flex flex-wrap gap-3">
                     {waLink && (
-                      <a href={waLink} target="_blank" rel="noreferrer" className="btn-primary">Send on WhatsApp</a>
+                      <a href={waLink} target="_blank" rel="noreferrer" className="btn-primary">
+                        Send on WhatsApp
+                      </a>
                     )}
-                    <a href={`mailto:${BOOKING_EMAIL}`} className="btn-ghost">Email us</a>
+                    <a href={`mailto:${BOOKING_EMAIL}`} className="btn-ghost">
+                      Email us
+                    </a>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Your name" required><input name="name" required type="text" className="input" placeholder="Full name" /></Field>
-                    <Field label="Email" required><input name="email" required type="email" className="input" placeholder="you@example.com" /></Field>
+                    <Field label="Your name" required>
+                      <input
+                        name="name"
+                        required
+                        type="text"
+                        className="input"
+                        placeholder="Full name"
+                      />
+                    </Field>
+                    <Field label="Email" required>
+                      <input
+                        name="email"
+                        required
+                        type="email"
+                        className="input"
+                        placeholder="you@example.com"
+                      />
+                    </Field>
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Phone"><input name="phone" type="tel" className="input" placeholder="+977…" /></Field>
-                    <Field label="Guests"><input name="guests" type="number" min={1} defaultValue={2} className="input" /></Field>
+                    <Field label="Phone">
+                      <input name="phone" type="tel" className="input" placeholder="+977…" />
+                    </Field>
+                    <Field label="Guests">
+                      <input
+                        name="guests"
+                        type="number"
+                        min={1}
+                        defaultValue={2}
+                        className="input"
+                      />
+                    </Field>
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
-                    <Field label="Check-in"><input name="checkin" type="date" className="input" /></Field>
-                    <Field label="Check-out"><input name="checkout" type="date" className="input" /></Field>
+                    <Field label="Check-in">
+                      <input name="checkin" type="date" className="input" />
+                    </Field>
+                    <Field label="Check-out">
+                      <input name="checkout" type="date" className="input" />
+                    </Field>
                   </div>
                   <Field label="Preferred cottage">
                     <select name="cottage" className="input" defaultValue="">
@@ -166,10 +241,19 @@ function Contact() {
                     </select>
                   </Field>
                   <Field label="Anything else?">
-                    <textarea name="message" rows={4} className="input" placeholder="Dietary needs, arrival time, celebrations…" />
+                    <textarea
+                      name="message"
+                      rows={4}
+                      className="input"
+                      placeholder="Dietary needs, arrival time, celebrations…"
+                    />
                   </Field>
                   {error && <p className="text-sm font-medium text-destructive">{error}</p>}
-                  <button type="submit" disabled={busy} className="btn-primary mt-2 justify-self-start disabled:opacity-60">
+                  <button
+                    type="submit"
+                    disabled={busy}
+                    className="btn-primary mt-2 justify-self-start disabled:opacity-60"
+                  >
                     {busy ? "Sending…" : "Send inquiry"}
                   </button>
                 </form>
@@ -203,7 +287,15 @@ function Contact() {
   );
 }
 
-function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+function Field({
+  label,
+  required,
+  children,
+}: {
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
   return (
     <label className="block">
       <span className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">

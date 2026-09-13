@@ -9,6 +9,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -26,7 +27,9 @@ function NotFoundComponent() {
           This trail doesn't lead anywhere. Let's get you back to the resort.
         </p>
         <div className="mt-6">
-          <Link to="/" className="btn-primary">Go home</Link>
+          <Link to="/" className="btn-primary">
+            Go home
+          </Link>
         </div>
       </div>
     </div>
@@ -46,14 +49,20 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           Something went wrong
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Please try again or head back home.
-        </p>
+        <p className="mt-2 text-sm text-muted-foreground">Please try again or head back home.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button onClick={() => { router.invalidate(); reset(); }} className="btn-primary">
+          <button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="btn-primary"
+          >
             Try again
           </button>
-          <a href="/" className="btn-ghost">Go home</a>
+          <a href="/" className="btn-ghost">
+            Go home
+          </a>
         </div>
       </div>
     </div>
@@ -73,11 +82,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Laligurans Agro Solutions — Hillside Cottages in Arghakhanchi, Nepal" },
-      { name: "description", content: "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple." },
+      {
+        name: "description",
+        content:
+          "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple.",
+      },
       { name: "author", content: "Laligurans Agro Solutions" },
       { name: "theme-color", content: "#091F14" },
-      { property: "og:title", content: "Laligurans Agro Solutions — Hillside Cottages in Arghakhanchi, Nepal" },
-      { property: "og:description", content: "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple." },
+      {
+        property: "og:title",
+        content: "Laligurans Agro Solutions — Hillside Cottages in Arghakhanchi, Nepal",
+      },
+      {
+        property: "og:description",
+        content:
+          "Stay in cozy wooden cottages on a working agro-farm in Malarani-5, Bangi, Arghakhanchi. Enjoy farm-fresh meals, bonfires, hillside views, and nearby Malarani Temple.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -108,6 +128,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <SpeedInsights />
       </body>
     </html>
   );
@@ -185,7 +206,13 @@ function Header() {
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             {open ? (
               <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
             ) : (
@@ -227,15 +254,17 @@ function Footer() {
         <div className="md:col-span-2">
           <h3 className="font-display text-2xl font-bold">Laligurans Agro Solutions</h3>
           <p className="mt-3 max-w-md text-sm text-cream/95">
-            A working agro-farm and cottage stay in the mid-hills of Arghakhanchi.
-            Slow mornings, garden-grown meals, bonfires under the stars.
+            A working agro-farm and cottage stay in the mid-hills of Arghakhanchi. Slow mornings,
+            garden-grown meals, bonfires under the stars.
           </p>
         </div>
         <div>
           <h4 className="text-xs font-semibold uppercase tracking-widest text-cream/95">Visit</h4>
           <p className="mt-3 text-sm text-cream/95">
-            Malarani-5, Bangi<br />
-            Arghakhanchi, Lumbini Province<br />
+            Malarani-5, Bangi
+            <br />
+            Arghakhanchi, Lumbini Province
+            <br />
             Nepal
           </p>
           <a
@@ -247,8 +276,13 @@ function Footer() {
             Open in Google Maps →
           </a>
           <p className="mt-4 text-sm text-cream/95">
-            <a href="mailto:genzhustle99@gmail.com" className="hover:text-accent break-all">genzhustle99@gmail.com</a><br />
-            <a href="tel:+9779768843117" className="hover:text-accent">+977 97688 43117</a>
+            <a href="mailto:genzhustle99@gmail.com" className="hover:text-accent break-all">
+              genzhustle99@gmail.com
+            </a>
+            <br />
+            <a href="tel:+9779768843117" className="hover:text-accent">
+              +977 97688 43117
+            </a>
           </p>
         </div>
         <div>
@@ -256,7 +290,9 @@ function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             {NAV.slice(1).map((n) => (
               <li key={n.to}>
-                <Link to={n.to} className="text-cream/95 hover:text-accent">{n.label}</Link>
+                <Link to={n.to} className="text-cream/95 hover:text-accent">
+                  {n.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -293,12 +329,17 @@ function MaintenancePage() {
           We'll be right back
         </h1>
         <p className="mt-3 text-base text-muted-foreground">
-          Laligurans Agro Solutions is briefly offline for updates. Please check
-          back soon — for bookings or urgent enquiries, reach us directly:
+          Laligurans Agro Solutions is briefly offline for updates. Please check back soon — for
+          bookings or urgent enquiries, reach us directly:
         </p>
         <div className="mt-6 flex flex-col items-center gap-2 text-sm">
-          <a href="tel:+9779768843117" className="btn-primary">Call +977 97688 43117</a>
-          <a href="mailto:genzhustle99@gmail.com" className="text-muted-foreground hover:text-accent">
+          <a href="tel:+9779768843117" className="btn-primary">
+            Call +977 97688 43117
+          </a>
+          <a
+            href="mailto:genzhustle99@gmail.com"
+            className="text-muted-foreground hover:text-accent"
+          >
             genzhustle99@gmail.com
           </a>
         </div>
