@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { PageHero } from "@/components/site/PageHero";
 import { useSiteImage } from "@/hooks/useSiteImage";
+import { submitInquiry } from "@/lib/inquiries.functions";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -20,30 +22,52 @@ const PHONE = "+9779768843117";
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [waLink, setWaLink] = useState<string>("");
   const heroImg = useSiteImage("contact.hero");
+  const send = useServerFn(submitInquiry);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const f = e.currentTarget;
     const get = (name: string) =>
       (f.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null)?.value ?? "";
 
-    const subject = `Booking inquiry — ${get("name") || "New guest"}`;
-    const body = [
-      `Name: ${get("name")}`,
-      `Email: ${get("email")}`,
-      `Phone: ${get("phone")}`,
-      `Guests: ${get("guests")}`,
-      `Check-in: ${get("checkin")}`,
-      `Check-out: ${get("checkout")}`,
-      `Preferred cottage: ${get("cottage")}`,
+    const payload = {
+      name: get("name"),
+      email: get("email"),
+      phone: get("phone"),
+      guests: get("guests"),
+      checkin: get("checkin"),
+      checkout: get("checkout"),
+      cottage: get("cottage"),
+      message: get("message"),
+    };
+
+    const summary = [
+      `Booking inquiry — ${payload.name || "New guest"}`,
+      `Email: ${payload.email}`,
+      `Phone: ${payload.phone}`,
+      `Guests: ${payload.guests}`,
+      `Check-in: ${payload.checkin}`,
+      `Check-out: ${payload.checkout}`,
+      `Preferred cottage: ${payload.cottage}`,
       ``,
-      `Message:`,
-      get("message"),
+      payload.message,
     ].join("\n");
 
-    window.location.href = `mailto:${BOOKING_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setBusy(true);
+    setError(null);
+    try {
+      await send({ data: payload });
+      setWaLink(`https://wa.me/${PHONE.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(summary)}`);
+      setSent(true);
+    } catch {
+      setError("We couldn't send that. Please try again, or write to us directly.");
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
