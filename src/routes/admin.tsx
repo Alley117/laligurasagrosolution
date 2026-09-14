@@ -16,7 +16,7 @@ import {
   setSiteActive,
   unlockAdmin,
 } from "@/lib/admin-gate.functions";
-import { listInquiries, markInquiryRead } from "@/lib/inquiries.functions";
+import { deleteInquiry, listInquiries, markInquiryRead } from "@/lib/inquiries.functions";
 
 export const Route = createFileRoute("/admin")({
   loader: async () => {
@@ -420,6 +420,7 @@ type Inquiry = {
 function InquiriesPanel() {
   const load = useServerFn(listInquiries);
   const mark = useServerFn(markInquiryRead);
+  const remove = useServerFn(deleteInquiry);
   const [rows, setRows] = useState<Inquiry[] | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
@@ -490,15 +491,27 @@ function InquiriesPanel() {
               </div>
               {r.message && <p className="whitespace-pre-wrap text-foreground/90">{r.message}</p>}
             </div>
-            <button
-              onClick={async () => {
-                await mark({ data: { id: r.id, isRead: !r.is_read } });
-                refresh();
-              }}
-              className="mt-3 text-xs font-medium text-muted-foreground underline hover:text-foreground"
-            >
-              Mark as {r.is_read ? "unread" : "read"}
-            </button>
+            <div className="mt-3 flex items-center gap-4">
+              <button
+                onClick={async () => {
+                  await mark({ data: { id: r.id, isRead: !r.is_read } });
+                  refresh();
+                }}
+                className="text-xs font-medium text-muted-foreground underline hover:text-foreground"
+              >
+                Mark as {r.is_read ? "unread" : "read"}
+              </button>
+              <button
+                onClick={async () => {
+                  if (!confirm(`Delete the inquiry from ${r.name}? This cannot be undone.`)) return;
+                  await remove({ data: { id: r.id } });
+                  refresh();
+                }}
+                className="text-xs font-medium text-destructive underline hover:opacity-80"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))}
       </div>

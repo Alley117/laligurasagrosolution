@@ -87,7 +87,7 @@ function Contact() {
               <ul className="mt-4 space-y-4 text-sm">
                 <li>
                   <div className="text-muted-foreground">Phone / WhatsApp</div>
-                  <a href={`tel:${PHONE}`} className="font-medium text-foreground hover:text-accent">+977 98511 55485</a>
+                  <a href={`tel:${PHONE}`} className="font-medium text-foreground hover:text-accent">+977 97688 43117</a>
                 </li>
                 <li>
                   <div className="text-muted-foreground">Email</div>
