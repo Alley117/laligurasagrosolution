@@ -16,7 +16,7 @@ import {
   setSiteActive,
   unlockAdmin,
 } from "@/lib/admin-gate.functions";
-import { listInquiries, markInquiryRead } from "@/lib/inquiries.functions";
+import { deleteInquiry, listInquiries, markInquiryRead } from "@/lib/inquiries.functions";
 
 export const Route = createFileRoute("/admin")({
   loader: async () => {
@@ -420,6 +420,7 @@ type Inquiry = {
 function InquiriesPanel() {
   const load = useServerFn(listInquiries);
   const mark = useServerFn(markInquiryRead);
+  const remove = useServerFn(deleteInquiry);
   const [rows, setRows] = useState<Inquiry[] | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
